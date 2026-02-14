@@ -103,4 +103,68 @@
 
         <!-- BOTTOM AD -->
         <div class="ad-slot" style="border-color:var(--pink);"><script async="async" data-cfasync="false" src="https://pl28711762.effectivegatecpm.com/9a437924caa885714adc8f3c6548e57d/invoke.js"></script>
-<div id="container-9a437924caa885714adc8f3c6548
+<div id="container-9a437924caa885714adc8f3c6548e57d"></div>
+    </div>
+
+    <footer>
+        <div style="font-family:'Orbitron'; color:var(--neon-cyan); font-size:20px; margin-bottom:15px;">JaGUar_Cinema.sh</div>
+        <div class="f-links">
+            <a href="#">DMCA</a> | <a href="#">CONTACT</a> | <a href="#">ABOUT</a> | <a href="#">TELEGRAM</a>
+        </div>
+        <p style="color:#333; font-size:10px; margin-top:20px;">© 2026 SECURE ENCRYPTED INTERFACE // ALL RIGHTS RESERVED</p>
+    </footer>
+
+    <script>
+        // ==========================================
+        // 1. ADD YOUR MOVIES HERE (Sabse Aasaan)
+        // ==========================================
+        const movies = [
+            { 
+                title: "Kis Kisko Pyaar Karoon 2 (2026) Hindi Movie Download", 
+                poster: "https://www.mp4moviez.cooking/cover/kis-kisko-pyaar-karoon-2-(2026)-hindi-movie.jpg", 
+                link: "https://shrinkme.click/oODaBY"
+            },
+            { 
+                title: "The Amazing Spider Man (2012) Hindi Dubbed Movie HDRip", 
+                poster: "https://www.mp4moviez.cooking/cover/the-amazing-spider-man-(2012)-hindi-dubbed-movie.jpg", 
+                link: "https://shrinkme.click/ypO1v1b" 
+            },
+            { 
+                title: "The Amazing Spider Man 2 (2014) Hindi Dubbed Movie HDRip", 
+                poster: "https://www.mp4moviez.cooking/cover/the-amazing-spider-man-2-(2014)-hindi-dubbed-movie.jpg", 
+                link: "https://shrinkme.click/w0I6lHo" 
+            }
+        ];
+
+        // ==========================================
+        // 2. AUTOMATIC ENGINE (Isse mat chhedna)
+        // ==========================================
+        function render(data) {
+            const grid = document.getElementById('movieGrid');
+            grid.innerHTML = data.map(m => `
+                <div class="movie-card" onclick="window.open('${m.link}', '_blank')">
+                    <img src="${m.poster}" alt="poster">
+                    <div class="movie-title">${m.title}</div>
+                </div>
+            `).join('');
+        }
+
+        function toggleMenu() {
+            document.getElementById('sideMenu').classList.toggle('active');
+            const overlay = document.getElementById('overlay');
+            overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function search() {
+            const val = document.getElementById('mSearch').value.toLowerCase();
+            const filtered = movies.filter(m => m.title.toLowerCase().includes(val));
+            render(filtered);
+        }
+
+        window.onload = () => {
+            render(movies);
+            setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 2000);
+        };
+    </script>
+</body>
+    </html>
