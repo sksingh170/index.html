@@ -41,41 +41,25 @@
         /* --- 4. MOVIE GRID & AD SLOTS --- */
         .container { padding: 20px 5%; flex: 1; }
         .ad-slot { background: rgba(255,255,255,0.05); border: 1px dashed var(--neon-cyan); margin: 15px auto; padding: 15px; text-align: center; color: var(--gold); font-size: 11px; max-width: 728px; }
-        /* डेस्कटॉप के लिए सामान्य सेटिंग्स */
-.ad-slot {
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    width: 100%;
-    margin: 10px 0;
-}
-
-/* मोबाइल व्यू के लिए सुधार (728px से कम चौड़ाई पर) */
-@media screen and (max-width: 728px) {
+        @media screen and (max-width: 728px) {
     .ad-slot iframe {
-        /* scale को 0.50 या 0.55 करके देखें, यह मोबाइल स्क्रीन पर बेहतर फिट होगा */
-        transform: scale(0.52); 
-        transform-origin: center top;
+        transform: scale(0.65); /* थोड़ा बड़ा किया है ताकि साफ़ दिखे */
+        transform-origin: left top; /* अब यह बाईं तरफ से स्केल होगा */
         
-        /* विज्ञापन को जबरदस्ती सेंटर में रखने के लिए */
-        margin-left: auto;
-        margin-right: auto;
+        /* विज्ञापन को सेंटर में लाने के लिए -15% से -25% के बीच एडजस्ट करें */
+        margin-left: -20%; 
         
-        /* iframe की अपनी चौड़ाई 728px ही रहनी चाहिए */
         width: 728px !important;
         max-width: none !important;
     }
 
     .ad-slot {
-        /* कंटेनर की हाइट मोबाइल के हिसाब से सेट करें */
-        height: 50px; 
+        height: 60px; /* हाइट थोड़ी बढ़ा दी है */
         width: 100%;
+        overflow: hidden;
         display: block;
-        text-align: center;
     }
 }
-
-
         .movie-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
         .movie-card { background: #0a0a0a; border-radius: 10px; overflow: hidden; position: relative; border: 1px solid transparent; border-image: var(--hacker-gradient) 1; transition: 0.3s; cursor: pointer; }
         .movie-card:hover { transform: translateY(-8px); box-shadow: 0 0 20px var(--neon-cyan); }
