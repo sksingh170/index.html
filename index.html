@@ -41,7 +41,28 @@
         /* --- 4. MOVIE GRID & AD SLOTS --- */
         .container { padding: 20px 5%; flex: 1; }
         .ad-slot { background: rgba(255,255,255,0.05); border: 1px dashed var(--neon-cyan); margin: 15px auto; padding: 15px; text-align: center; color: var(--gold); font-size: 11px; max-width: 728px; }
-        
+        /* डेस्कटॉप पर विज्ञापन बीच में रहे */
+.ad-slot {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+/* मोबाइल (728px से कम) के लिए */
+@media screen and (max-width: 728px) {
+    .ad-slot iframe {
+        transform: scale(0.45); /* विज्ञापन को छोटा कर देगा */
+        transform-origin: center top; 
+        max-width: none !important;
+        width: 728px !important; /* विज्ञापन की असली चौड़ाई बरकरार रखेगा */
+    }
+    
+    .ad-slot {
+        height: 50px; /* छोटे विज्ञापन के हिसाब से कंटेनर की हाइट कम करें */
+    }
+}
+
         .movie-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
         .movie-card { background: #0a0a0a; border-radius: 10px; overflow: hidden; position: relative; border: 1px solid transparent; border-image: var(--hacker-gradient) 1; transition: 0.3s; cursor: pointer; }
         .movie-card:hover { transform: translateY(-8px); box-shadow: 0 0 20px var(--neon-cyan); }
