@@ -323,6 +323,20 @@
         font-size: 12px;
         font-weight: bold;
       }
+      .pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+.pagination button {
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
     </style>
 
     <div id="loader">
@@ -591,6 +605,18 @@
                 link: "https://shrinkme.click/gtLZq9" 
         }
         ];
+        
+        <!-- Movies Container -->
+<div id="movie-container">
+  <!-- Aapki movies yaha show hongi -->
+</div>
+
+<!-- Pagination Buttons (Isse movies ke niche lagayein) -->
+<div class="pagination">
+  <button id="prev-btn">Previous</button>
+  <span id="page-num">1</span>
+  <button id="next-btn">Next</button>
+</div>
 
         // ==========================================
         // 2. AUTOMATIC ENGINE (Isse mat chhedna)
@@ -633,5 +659,39 @@
         style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
   Download / Continue
 </button>
+ <script>
+    const movies = document.querySelectorAll('.movie-card'); // Aapki movie class ka naam yaha likhein
+const moviesPerPage = 10; // Ek page par kitni movie dikhani hai
+let currentPage = 1;
+
+function showPage(page) {
+  const start = (page - 1) * moviesPerPage;
+  const end = start + moviesPerPage;
+
+  movies.forEach((movie, index) => {
+    movie.style.display = (index >= start && index < end) ? 'block' : 'none';
+  });
+
+  document.getElementById('page-num').innerText = page;
+}
+
+// Next aur Previous buttons ka logic
+document.getElementById('prev-btn').addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--;
+    showPage(currentPage);
+  }
+});
+
+document.getElementById('next-btn').addEventListener('click', () => {
+  if (currentPage < Math.ceil(movies.length / moviesPerPage)) {
+    currentPage++;
+    showPage(currentPage);
+  }
+});
+
+// Shuruat mein pehla page dikhayein
+showPage(currentPage);
+ </script>
   </body>
 </html>
