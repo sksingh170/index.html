@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head></head>
+  <head>
+    .pagination-btn {
+    padding: 8px 16px;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+}
+.pagination-btn.active {
+    background: #007bff;
+    color: white;
+}
+
+  </head>
   <body>
     ⅝
 
@@ -591,7 +604,18 @@
                 link: "https://shrinkme.click/gtLZq9" 
         }
         ];
-        
+
+        <div id="movie-container">
+    <!-- आपकी 1st मूवी -->
+    <div class="movie-item">Movie 1</div>
+    <!-- आपकी 2nd मूवी -->
+    <div class="movie-item">Movie 2</div>
+    <!-- ... इसी तरह सारी मूवीज़ डालें ... -->
+</div>
+
+<!-- यहाँ पेज नंबर दिखेंगे -->
+<div id="pagination-controls"></div>
+    
         // ==========================================
         // 2. AUTOMATIC ENGINE (Isse mat chhedna)
         // ==========================================
@@ -633,5 +657,44 @@
         style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
   Download / Continue
 </button>
+    
+  <script>
+const itemsPerPage = 8; // एक पेज पर मूवी की संख्या
+const movieContainer = document.getElementById('movie-container');
+const movies = Array.from(movieContainer.getElementsByClassName('movie-item'));
+const paginationControls = document.getElementById('pagination-controls');
+let currentPage = 1;
+
+function displayMovies(page) {
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+
+    movies.forEach((movie, index) => {
+        movie.style.display = (index >= start && index < end) ? 'block' : 'none';
+    });
+    
+    renderButtons();
+}
+
+function renderButtons() {
+    const totalPages = Math.ceil(movies.length / itemsPerPage);
+    paginationControls.innerHTML = "";
+
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.innerText = i;
+        btn.className = 'pagination-btn' + (i === currentPage ? ' active' : '');
+        btn.onclick = () => {
+            currentPage = i;
+            displayMovies(currentPage);
+        };
+        paginationControls.appendChild(btn);
+    }
+}
+
+// पहली बार पेज लोड होने पर दिखाएँ
+displayMovies(currentPage);
+</script>
+
   </body>
 </html>
