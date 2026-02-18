@@ -1,314 +1,637 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JaGUar Cinema | 2026 Cyber Premium</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet" />
-  
-  <style>
-    :root {
-      --neon-cyan: #00f2ff;
-      --gold: #f39c12;
-      --pink: #ff007f;
-      --iaf-grey: #8d99ae;
-      --hacker-gradient: linear-gradient(45deg, #ff007f, #00f2ff, #f39c12, #bc13fe);
-    }
+  <head></head>
+  <body>
+    ⅝
 
-    body {
-      margin: 0;
-      background: #000;
-      color: white;
-      font-family: "Rajdhani", sans-serif;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    /* Loader same */
-    #loader {
-      position: fixed; inset: 0; background: #000; z-index: 10000;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-    }
-    .mini-sub { position: relative; width: 140px; height: 70px; animation: subFloat 4s infinite ease-in-out; }
-    .sub-body { width: 120px; height: 45px; background: linear-gradient(to bottom, #7f8c8d, #2c3e50); border-radius: 40px 100px 100px 40px; box-shadow: inset -10px -5px 15px rgba(0,0,0,0.5), 0 0 15px var(--neon-cyan); }
-    .sub-body::before { content: ""; position: absolute; top: 15px; left: 35px; width: 8px; height: 8px; background: #00d2ff; border-radius: 50%; box-shadow: 20px 0 0 #00d2ff, 40px 0 0 #00d2ff; border: 1px solid #000; }
-    .missile-pod { position: absolute; bottom: 5px; left: 40px; width: 35px; height: 6px; background: #222; border: 1px solid var(--pink); box-shadow: 0 0 10px var(--pink); }
-    .sub-tower { position: absolute; top: -18px; left: 45px; width: 30px; height: 25px; background: #4b5563; border-radius: 5px; border-top: 3px solid #95a5a6; }
-    .propeller { position: absolute; left: -8px; top: 12px; width: 10px; height: 25px; background: #222; border-radius: 50%; animation: spin 0.4s infinite linear; }
-    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    @keyframes subFloat { 0%,100% { transform: translateY(0) rotate(3deg); } 50% { transform: translateY(15px) rotate(-3deg); } }
-
-    header { padding: 10px 5%; background: rgba(0,0,0,0.95); border-bottom: 2px solid; border-image: var(--hacker-gradient) 1; text-align: center; position: sticky; top: 0; z-index: 1000; }
-    .jaguar-text { font-family: "Orbitron"; font-size: clamp(28px, 6vw, 35px); font-weight: 900; background: var(--hacker-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: hueRotate 5s infinite linear; }
-    @keyframes hueRotate { from { filter: hue-rotate(0deg); } to { filter: hue-rotate(360deg); } }
-
-    .top-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; flex-wrap: wrap; gap: 10px; }
-    .menu-btn { background: var(--neon-cyan); color: #000; border: none; padding: 8px 16px; border-radius: 6px; font-family: "Orbitron"; font-weight: 900; cursor: pointer; }
-    .search-box { background: #111; border: 1px solid var(--neon-cyan); padding: 8px 14px; border-radius: 20px; color: white; flex: 1; max-width: 220px; outline: none; }
-
-    .container { padding: 15px 4%; flex: 1; max-width: 1400px; margin: 0 auto; width: 100%; }
-
-    .movie-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
-
-    .movie-card { background: #0a0a0a; border-radius: 10px; overflow: hidden; border: 1px solid transparent; border-image: var(--hacker-gradient) 1; transition: 0.3s; cursor: pointer; }
-    .movie-card:hover { transform: translateY(-8px); box-shadow: 0 0 20px var(--neon-cyan); }
-    .movie-card img { width: 100%; height: 230px; object-fit: cover; }
-    .movie-title { padding: 10px; text-align: center; font-family: "Orbitron"; font-size: 11px; height: 40px; overflow: hidden; }
-
-    .side-menu { position: fixed; top: 0; left: -280px; width: 260px; height: 100%; background: #080808; z-index: 5000; transition: 0.4s; padding: 20px; border-right: 2px solid var(--pink); }
-    .side-menu.active { left: 0; }
-    .side-menu a { display: block; color: #fff; text-decoration: none; padding: 12px; border-bottom: 1px solid #111; font-family: "Orbitron"; font-size: 12px; cursor: pointer; }
-    .side-menu a:hover { color: var(--neon-cyan); }
-    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 4000; display: none; }
-
-    .pagination { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 30px 0 40px; }
-    .page-btn { background: #111; color: var(--neon-cyan); border: 1px solid var(--neon-cyan); padding: 8px 14px; border-radius: 6px; cursor: pointer; min-width: 40px; text-align: center; }
-    .page-btn:hover { background: var(--neon-cyan); color: #000; }
-    .page-btn.active { background: var(--pink); border-color: var(--pink); color: white; }
-    .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-    .dots { color: #555; padding: 8px; }
-
-    footer { background: #050505; border-top: 2px solid; border-image: var(--hacker-gradient) 1; padding: 40px 20px; text-align: center; margin-top: auto; }
-
-    /* ────────────────────────────────────────────────
-       RESPONSIVE ADS STYLING - सबसे महत्वपूर्ण हिस्सा
-    ──────────────────────────────────────────────── */
-    .ad-slot {
-      margin: 20px auto;
-      text-align: center;
-      overflow: hidden;
-      max-width: 100%;
-    }
-
-    .ad-desktop { display: block; }
-    .ad-mobile   { display: none; }
-
-    @media (max-width: 767px) {
-      .ad-desktop { display: none; }
-      .ad-mobile   { display: block; }
-
-      .ad-slot iframe,
-      .ad-slot > div,
-      .ad-slot > script + div {
-        width: 100% !important;
-        max-width: 320px !important;
-        height: auto !important;
-        margin: 0 auto;
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JaGUar Cinema | 2026 Cyber Premium</title>
+    <link href="https://fonts.googleapis.com" rel="stylesheet" />
+    <style>
+      :root {
+        --neon-cyan: #00f2ff;
+        --gold: #f39c12;
+        --pink: #ff007f;
+        --iaf-grey: #8d99ae;
+        --hacker-gradient: linear-gradient(45deg, #ff007f, #00f2ff, #f39c12, #bc13fe);
       }
 
-      /* कुछ ad networks के लिए extra safety */
+      body {
+        margin: 0;
+        background: #000;
+        color: white;
+        font-family: "Rajdhani", sans-serif;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* --- 1. SUBMARINE LOADER (Missile & Windows) --- */
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.8s;
+      }
+      .loader-content {
+        position: relative;
+        width: 200px;
+        height: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .mini-sub {
+        position: relative;
+        width: 140px;
+        height: 70px;
+        z-index: 3;
+        animation: subFloat 4s infinite ease-in-out;
+        transform-style: preserve-3d;
+      }
+      .sub-body {
+        width: 120px;
+        height: 45px;
+        background: linear-gradient(to bottom, #7f8c8d, #2c3e50);
+        border-radius: 40px 100px 100px 40px;
+        position: relative;
+        box-shadow:
+          inset -10px -5px 15px rgba(0, 0, 0, 0.5),
+          0 0 15px var(--neon-cyan);
+      }
+      .sub-body::before {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 35px;
+        width: 8px;
+        height: 8px;
+        background: #00d2ff;
+        border-radius: 50%;
+        box-shadow:
+          20px 0 0 #00d2ff,
+          40px 0 0 #00d2ff;
+        border: 1px solid #000;
+      }
+      .missile-pod {
+        position: absolute;
+        bottom: 5px;
+        left: 40px;
+        width: 35px;
+        height: 6px;
+        background: #222;
+        border: 1px solid var(--pink);
+        box-shadow: 0 0 10px var(--pink);
+      }
+      .sub-tower {
+        position: absolute;
+        top: -18px;
+        left: 45px;
+        width: 30px;
+        height: 25px;
+        background: #4b5563;
+        border-radius: 5px;
+        border-top: 3px solid #95a5a6;
+      }
+      .propeller {
+        position: absolute;
+        left: -8px;
+        top: 12px;
+        width: 10px;
+        height: 25px;
+        background: #222;
+        border-radius: 50%;
+        animation: spin 0.4s infinite linear;
+      }
+      @keyframes spin {
+        from {
+          transform: rotateX(0deg);
+        }
+        to {
+          transform: rotateX(360deg);
+        }
+      }
+      @keyframes subFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(3deg);
+        }
+        50% {
+          transform: translateY(15px) rotate(-3deg);
+        }
+      }
+
+      /* --- 2. HEADER & RAFALE --- */
+      header {
+        padding: 10px 5%;
+        background: rgba(0, 0, 0, 0.95);
+        border-bottom: 2px solid;
+        border-image: var(--hacker-gradient) 1;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .jaguar-text {
+        font-family: "Orbitron";
+        font-size: 35px;
+        font-weight: 900;
+        background: var(--hacker-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: hueRotate 5s infinite linear;
+      }
+      @keyframes hueRotate {
+        from {
+          filter: hue-rotate(0deg);
+        }
+        to {
+          filter: hue-rotate(360deg);
+        }
+      }
+      .jet-window {
+        width: 100%;
+        height: 50px;
+        position: relative;
+        overflow: hidden;
+      }
+      .rafale-iaf {
+        width: 50px;
+        height: 30px;
+        position: absolute;
+        animation: rafaleFly 5s infinite linear;
+        filter: drop-shadow(0 0 8px var(--neon-cyan));
+      }
+      @keyframes rafaleFly {
+        0% {
+          left: -100px;
+          transform: scale(0.6);
+        }
+        100% {
+          left: 110%;
+          transform: scale(1.4);
+        }
+      }
+
+      /* --- 3. MENU & NAVIGATION --- */
+      .top-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+      }
+      .menu-btn {
+        background: var(--neon-cyan);
+        color: #000;
+        border: none;
+        padding: 7px 15px;
+        border-radius: 5px;
+        font-family: "Orbitron";
+        font-weight: 900;
+        cursor: pointer;
+      }
+      .search-box {
+        background: #111;
+        border: 1px solid var(--neon-cyan);
+        padding: 6px 12px;
+        border-radius: 20px;
+        color: white;
+        width: 150px;
+        outline: none;
+      }
+
+      /* --- 4. MOVIE GRID & AD SLOTS --- */
+      .container {
+        padding: 20px 5%;
+        flex: 1;
+      }
       .ad-slot {
-        padding: 0 10px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px dashed var(--neon-cyan);
+        margin: 15px auto;
+        padding: 15px;
+        text-align: center;
+        color: var(--gold);
+        font-size: 11px;
+        max-width: 728px;
       }
-    }
+      @media screen and (max-width: 728px) {
+        .ad-slot iframe {
+          transform: scale(0.65); /* थोड़ा बड़ा किया है ताकि साफ़ दिखे */
+          transform-origin: left top; /* अब यह बाईं तरफ से स्केल होगा */
 
-    @media (min-width: 768px) {
-      .ad-slot iframe,
-      .ad-slot > div {
-        max-width: 728px !important;
+          /* विज्ञापन को सेंटर में लाने के लिए -15% से -25% के बीच एडजस्ट करें */
+          margin-left: -20%;
+
+          width: 728px !important;
+          max-width: none !important;
+        }
+
+        .ad-slot {
+          height: 60px; /* हाइट थोड़ी बढ़ा दी है */
+          width: 100%;
+          overflow: hidden;
+          display: block;
+        }
       }
-    }
-
-    /* Side skyscraper / vertical ads (160x600 or 300x250) */
-    .ad-vertical {
-      margin: 20px auto;
-      max-width: 300px;
-    }
-
-    @media (max-width: 767px) {
-      .ad-vertical {
-        max-width: 320px;
+      .movie-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
       }
-    }
-  </style>
-</head>
-<body>
+      .movie-card {
+        background: #0a0a0a;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid transparent;
+        border-image: var(--hacker-gradient) 1;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .movie-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 0 20px var(--neon-cyan);
+      }
+      .movie-card img {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+      }
+      .movie-title {
+        padding: 10px;
+        text-align: center;
+        font-family: "Orbitron";
+        font-size: 11px;
+        color: #fff;
+        height: 35px;
+        overflow: hidden;
+      }
 
-<div id="loader">
-  <div class="loader-content">
-    <div class="mini-sub">
-      <div class="propeller"></div>
-      <div class="sub-tower"></div>
-      <div class="sub-body"><div class="missile-pod"></div></div>
+      /* --- 5. SIDE MENU & FOOTER --- */
+      .side-menu {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 260px;
+        height: 100%;
+        background: #080808;
+        z-index: 5000;
+        transition: 0.4s;
+        padding: 20px;
+        border-right: 2px solid var(--pink);
+      }
+      .side-menu.active {
+        left: 0;
+      }
+      .side-menu a {
+        display: block;
+        color: #fff;
+        text-decoration: none;
+        padding: 12px;
+        border-bottom: 1px solid #111;
+        font-family: "Orbitron";
+        font-size: 12px;
+      }
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 4000;
+        display: none;
+      }
+
+      footer {
+        background: #050505;
+        border-top: 2px solid;
+        border-image: var(--hacker-gradient) 1;
+        padding: 40px 20px;
+        text-align: center;
+        margin-top: auto;
+      }
+      .f-links a {
+        color: var(--neon-cyan);
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+    </style>
+
+    <div id="loader">
+      <div class="loader-content">
+        <div class="mini-sub">
+          <div class="propeller"></div>
+          <div class="sub-tower"></div>
+          <div class="sub-body"><div class="missile-pod"></div></div>
+        </div>
+      </div>
+      <h2 style="font-family: &quot;Orbitron&quot;; color: var(--neon-cyan); margin-top: 30px; letter-spacing: 4px">
+        LOADING...
+      </h2>
     </div>
-  </div>
-  <h2 style="font-family:'Orbitron'; color:var(--neon-cyan); margin-top:30px; letter-spacing:4px">LOADING...</h2>
-</div>
 
-<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="side-menu" id="sideMenu">
+      <h3 style="color: var(--gold); font-family: &quot;Orbitron&quot;">CATEGORIES</h3>
+      <a href="#">BOLLYWOOD</a>
+      <a href="#">HOLLYWOOD</a>
+      <a href="#">WEB SERIES</a>
+      <a href="https://t.me" style="color: var(--neon-cyan)">JOIN TELEGRAM</a>
+      <button
+        onclick="toggleMenu()"
+        style="
+          margin-top: 20px;
+          width: 100%;
+          background: red;
+          color: white;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+        "
+      >
+        CLOSE
+      </button>
+    </div>
 
-<div class="side-menu" id="sideMenu">
-  <h3 style="color:var(--gold); font-family:'Orbitron'; margin-bottom:20px;">CATEGORIES</h3>
-  <a onclick="filterByCategory(null)">ALL MOVIES</a>
-  <a onclick="filterByCategory('BOLLYWOOD')">BOLLYWOOD</a>
-  <a onclick="filterByCategory('HOLLYWOOD')">HOLLYWOOD</a>
-  <a onclick="filterByCategory('WEB SERIES')">WEB SERIES</a>
-  <a href="https://t.me" style="color:var(--neon-cyan)">JOIN TELEGRAM</a>
-  <button onclick="toggleMenu()" style="margin-top:25px; width:100%; background:#e74c3c; color:white; border:none; padding:10px; cursor:pointer; border-radius:5px;">
-    CLOSE
-  </button>
-</div>
+    <header>
+      <div class="jaguar-text">JaGUar Cinema</div>
+      <div class="jet-window">
+        <svg class="rafale-iaf" viewBox="0 0 100 50">
+          <path d="M10,25 L40,20 L80,25 L40,30 Z" fill="var(--iaf-grey)" stroke="var(--neon-cyan)"></path>
+        </svg>
+      </div>
+      <div class="top-nav">
+        <button class="menu-btn" onclick="toggleMenu()">☰ MENU</button>
+        <input type="text" class="search-box" id="mSearch" placeholder="SEARCH..." onkeyup="search()" />
+      </div>
+    </header>
 
-<header>
-  <div class="jaguar-text">JaGUar Cinema</div>
-  <div class="top-nav">
-    <button class="menu-btn" onclick="toggleMenu()">☰ MENU</button>
-    <input type="text" class="search-box" id="mSearch" placeholder="SEARCH..." onkeyup="search()" />
-  </div>
-</header>
-
-<div class="container">
-
-  <!-- TOP AD - Desktop & Mobile अलग-अलग -->
-  <div class="ad-slot">
-    <!-- Desktop version (728x90) -->
-    <div class="ad-desktop">
+    <div class="container">
+      <!-- TOP AD -->
+      <div class="ad-slot">
+        <script>
+          atOptions = {
+            key: "13683c613242723f7f0d3d473d8badfe",
+            format: "iframe",
+            height: 90,
+            width: 728,
+            params: {},
+          };
+        </script>
+        <script src="https://www.highperformanceformat.com/13683c613242723f7f0d3d473d8badfe/invoke.js"></script>
+      </div>
+      <div class="movie-grid" id="movieGrid"></div>
       <script>
         atOptions = {
-          'key' : '13683c613242723f7f0d3d473d8badfe',
-          'format' : 'iframe',
-          'height' : 90,
-          'width' : 728,
-          'params' : {}
-        };
-      </script>
-      <script src="https://www.highperformanceformat.com/13683c613242723f7f0d3d473d8badfe/invoke.js"></script>
-    </div>
-
-    <!-- Mobile version (320x50 or similar) -->
-    <div class="ad-mobile">
-      <script>
-        atOptions = {
-          'key' : 'c96d3ac9b4865cbcf9690e7a6e05beb2',
-          'format' : 'iframe',
-          'height' : 50,
-          'width' : 320,
-          'params' : {}
+          key: "e12265a45715625b2f83453b9bdcefee",
+          format: "iframe",
+          height: 50,
+          width: 320,
+          params: {},
         };
       </script>
       <script src="https://www.highperformanceformat.com/c96d3ac9b4865cbcf9690e7a6e05beb2/invoke.js"></script>
-    </div>
-  </div>
-
-  <div class="movie-grid" id="movieGrid"></div>
-
-  <div class="pagination" id="pagination"></div>
-
-  <!-- Optional: Vertical ad example (sidebar type) -->
-  <div class="ad-vertical ad-slot">
-    <script>
-      atOptions = {
-        'key' : '53fae0bd6201965585d9a9275eb380db',
-        'format' : 'iframe',
-        'height' : 300,
-        'width' : 160,
-        'params' : {}
-      };
-    </script>
-    <script src="https://www.highperformanceformat.com/53fae0bd6201965585d9a9275eb380db/invoke.js"></script>
-  </div>
-
-  <footer>
-    <div style="font-family:'Orbitron'; color:var(--neon-cyan); font-size:20px; margin-bottom:15px">JaGUar_Cinema.sh</div>
-    <div class="f-links">
-      <a href="#">DMCA</a> | <a href="#">CONTACT</a> | <a href="#">ABOUT</a> | <a href="#">TELEGRAM</a>
-    </div>
-    <p style="color:#333; font-size:10px; margin-top:20px">© 2026 SECURE ENCRYPTED INTERFACE // ALL RIGHTS RESERVED</p>
-  </footer>
-</div>
-
-<script>
-// तुम्हारा movies array, pagination, filter logic वही रहेगा (पिछले मैसेज वाला)
-const movies = [ /* ... तुम्हारा पूरा array category के साथ ... */ ];
-
-const moviesPerPage = 10;
-let currentPage     = 1;
-let currentCategory = null;
-let currentSearch   = "";
-let filteredMovies  = [];
-
-function applyFilters() {
-  filteredMovies = movies.filter(m => {
-    const catMatch = !currentCategory || m.category === currentCategory;
-    const searchMatch = !currentSearch || m.title.toLowerCase().includes(currentSearch);
-    return catMatch && searchMatch;
-  });
-  currentPage = 1;
-  renderMovies();
-}
-
-function renderMovies() {
-  const grid = document.getElementById("movieGrid");
-  const start = (currentPage - 1) * moviesPerPage;
-  const pageMovies = filteredMovies.slice(start, start + moviesPerPage);
-
-  grid.innerHTML = pageMovies.map(m => `
-    <div class="movie-card" onclick="window.open('${m.link}', '_blank')">
-      <img src="${m.poster}" alt="${m.title}" onerror="this.src='https://via.placeholder.com/160x230?text=No+Poster';">
-      <div class="movie-title">${m.title}</div>
-    </div>
-  `).join("");
-
-  renderPagination();
-}
-
-function renderPagination() {
-  const totalPages = Math.ceil(filteredMovies.length / moviesPerPage);
-  const pag = document.getElementById("pagination");
-  pag.innerHTML = "";
-
-  if (totalPages <= 1) return;
-
-  pag.innerHTML += `<button class="page-btn" ${currentPage <= 1 ? 'disabled' : ''} onclick="changePage(${currentPage-1})">← Prev</button>`;
-
-  for (let i = 1; i <= totalPages; i++) {
-    if (Math.abs(i - currentPage) <= 2 || i === 1 || i === totalPages) {
-      pag.innerHTML += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
-    } else if (pag.lastChild?.textContent !== "...") {
-      pag.innerHTML += `<span class="dots">...</span>`;
-    }
-  }
-
-  pag.innerHTML += `<button class="page-btn" ${currentPage >= totalPages ? 'disabled' : ''} onclick="changePage(${currentPage+1})">Next →</button>`;
-}
-
-function changePage(page) {
-  const max = Math.ceil(filteredMovies.length / moviesPerPage);
-  if (page < 1 || page > max) return;
-  currentPage = page;
-  renderMovies();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function filterByCategory(cat) {
-  currentCategory = cat;
-  applyFilters();
-  toggleMenu();
-}
-
-function search() {
-  currentSearch = document.getElementById("mSearch").value.toLowerCase().trim();
-  applyFilters();
-}
-
-function toggleMenu() {
-  const menu = document.getElementById("sideMenu");
-  const overlay = document.getElementById("overlay");
-  menu.classList.toggle("active");
-  overlay.style.display = menu.classList.contains("active") ? "block" : "none";
-}
-
-window.onload = () => {
-  applyFilters();
-  setTimeout(() => {
-    document.getElementById("loader").style.display = "none";
-  }, 2000);
-};
+      <!-- Mobile Optimized Ad Container -->
+      <div
+        id="ad-mobile-wrapper"
+        style="width: 100%; display: flex; justify-content: center; margin: 10px 0; overflow: hidden"
+      >
+        <script type="text/javascript">
+          atOptions = {
+            key: "c96d3ac9b4865cbcf9690e7a6e05beb2",
+            format: "iframe",
+            height: 50 /* Mobile height */,
+            width: 320 /* Mobile width */,
+            params: {},
+          };
+        </script>
+        <script src="https://www.highperformanceformat.com"></script>
+        <script>
+          atOptions = {
+            key: "53fae0bd6201965585d9a9275eb380db",
+            format: "iframe",
+            height: 300,
+            width: 160,
+            params: {},
+          };
+        </script>
+        <script src="https://www.highperformanceformat.com/53fae0bd6201965585d9a9275eb380db/invoke.js"></script>
+        <script>
+  atOptions = {
+    'key' : 'db044b6ccc33ccbd0fdc03bdd9b79606',
+    'format' : 'iframe',
+    'height' : 600,
+    'width' : 160,
+    'params' : {}
+  };
 </script>
+<script src="https://www.highperformanceformat.com/db044b6ccc33ccbd0fdc03bdd9b79606/invoke.js"></script>
+    <script src="https://pl28723245.effectivegatecpm.com/50/64/91/50649151d6bcc5f657d22e6f962f04b2.js"></script>
+      </div>
+      <!-- BOTTOM AD -->
+      <div class="ad-slot" style="border-color: var(--pink)">
+        <script
+          async="async"
+          data-cfasync="false"
+          src="https://pl28711762.effectivegatecpm.com/9a437924caa885714adc8f3c6548e57d/invoke.js"
+        ></script>
+        <div id="container-9a437924caa885714adc8f3c6548e57d"></div>
+      </div>
 
-<!-- तुम्हारे बाकी bottom scripts / extra ads अगर हैं तो नीचे डाल सकते हो -->
+      <footer>
+        <div style="font-family: &quot;Orbitron&quot;; color: var(--neon-cyan); font-size: 20px; margin-bottom: 15px">
+          JaGUar_Cinema.sh
+        </div>
+        <div class="f-links">
+          <a href="#">DMCA</a>
+          |
+          <a href="#">CONTACT</a>
+          |
+          <a href="#">ABOUT</a>
+          |
+          <a href="#">TELEGRAM</a>
+        </div>
+        <p style="color: #333; font-size: 10px; margin-top: 20px">
+          © 2026 SECURE ENCRYPTED INTERFACE // ALL RIGHTS RESERVED
+        </p>
+        <!-- Website Footer Link Code -->
+        <footer>
+          <div class="footer-content">
+            <p>© 2024 Your Website Name. All rights reserved.</p>
+            <a
+              href="https://www.effectivegatecpm.com"
+              target="_blank"
+              rel="nofollow sponsored"
+              style="color: #666; text-decoration: none; font-size: 12px"
+            >
+              Special Offer
+            </a>
+          </div>
+        </footer>
+      </footer>
+      <script src="https://pl28712775.effectivegatecpm.com/c5/39/0c/c5390cf1acc479a8624da665804049dd.js"></script>
+      <script src="https://pl28723245.effectivegatecpm.com/50/64/91/50649151d6bcc5f657d22e6f962f04b2.js"></script>
+      <!-- Container for the Ad -->
+      <div id="ad-container" style="text-align: center; margin: 10px 0">
+        <script type="text/javascript">
+          // Screen width check karke sahi size load karega
+          var isMobile = window.innerWidth <= 768;
 
-</body>
-  </html>
+          atOptions = {
+            key: "c96d3ac9b4865cbcf9690e7a6e05beb2",
+            format: "iframe",
+            height: isMobile ? 50 : 90, // Mobile: 50px, Desktop: 90px
+            width: isMobile ? 320 : 728, // Mobile: 320px, Desktop: 728px
+            params: {},
+          };
+        </script>
+        <script src="https://www.highperformanceformat.com"></script>
+      </div>
+      <script src="https://www.highperformanceformat.com/e12265a45715625b2f83453b9bdcefee/invoke.js"></script>
+      <script>
+        atOptions = {
+          key: "c96d3ac9b4865cbcf9690e7a6e05beb2",
+          format: "iframe",
+          height: 50,
+          width: 320,
+          params: {},
+        };
+      </script>
+      <script>
+        // ==========================================
+        // 1. ADD YOUR MOVIES HERE (Sabse Aasaan)
+        // ==========================================
+        const movies = [
+          {
+            title: "Kis Kisko Pyaar Karoon 2 (2026) Hindi Movie Download",
+            poster: "https://www.mp4moviez.cooking/cover/kis-kisko-pyaar-karoon-2-(2026)-hindi-movie.jpg",
+            link: "https://shrinkme.click/oODaBY",
+          },
+          {
+            title: "The Amazing Spider Man (2012) Hindi Dubbed Movie HDRip",
+            poster: "https://www.mp4moviez.cooking/cover/the-amazing-spider-man-(2012)-hindi-dubbed-movie.jpg",
+            link: "https://shrinkme.click/ypO1v1b",
+          },
+          {
+            title: "The Amazing Spider Man 2 (2014) Hindi Dubbed Movie HDRip",
+            poster: "https://www.mp4moviez.cooking/cover/the-amazing-spider-man-2-(2014)-hindi-dubbed-movie.jpg",
+            link: "https://shrinkme.click/w0I6lHo",
+          },
+          {
+            title: "Fast and Furious Presents Hobbs and Shaw 2019 Hindi Dubbed Full Movie Download",
+            poster:
+              "https://www.mp4moviez.cooking/cover/fast-and-furious-presents-hobbs-and-shaw-2019-hindi-dubbed-full-movie.jpg",
+            link: "https://shrinkme.click/QelPB",
+          },
+
+          {
+            title: "Fast And Furious 2009 Hindi Dubbed Full Movie BluRay",
+            poster: "https://www.mp4moviez.cooking/cover/fast-and-furious-4-2009-hindi-dubbed-full-movie.jpg",
+            link: "https://shrinkme.click/7gG2j",
+          },
+          {
+            title: "Fast And Furious 5 (2011) Hindi Dubbed Full Movie BluRay",
+            poster: "https://www.mp4moviez.cooking/cover/fast-and-furious-5-(2011)-hindi-dubbed-full-movie.jpg",
+            link: "https://shrinkme.click/3te4H",
+          },
+          {
+            title: "O’ Romeo (2026) Hindi Full Movie HQ HDTC",
+            poster:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI5rMEICmkgQFvSHfSUDChQCQBxVw8Qt6BoWXZ7L43y5QI5gZLfnH2yGAp-JqqTjhNjRYdprKnCgpk-7uQ2-EA8tppIdjDlfX1Wsl96UvsW-WoawZBczcLNS6gmTVYy5FXP2KIdVeLlrPrxEY17E-68ScoNbV_ENje6g2pEWU3iOrqay3Fo0cGK2cx8Dcm/s16000/O%E2%80%99%20Romeo.jpg",
+            link: "https://shrinkme.click/dJ6hV",
+          },
+          {
+            title: "Mardaani 3 (2026) Hindi Full Movie HQ HDTC",
+            poster:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7MXusm-PqDVtwA0wz1jeN_bNfV02pN7b1lSI6MCWJ56W5HisFrzg_hEmzaSy4BSql2DQ7PhPzC0HMh5tkMqiLHmDCkpzD4MV7SDfabOqjmDluywTzeH2kattmSuxPlsccB5UdOzfS3VLeH10R5gfvQj9TQdB_IIWMh2N7_iWao7j9SLdV5wyrupBO-AOK/s16000/Mardaani%203%20(1).jpg",
+            link: "https://shrinkme.click/eRCszUD6",
+          },
+          {
+            title: "Dhurandhar (2025) NF Hindi ORG Full Movie HDRip",
+            poster:
+              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwBU9Hs-KKYAF4e8sA0RpsJDSaHhbW-iCHF_iN3AIsQqyMp8Ibk6UTsikvkrug3HuTYEKdZonbS5ZJoUdklyrk1OIjGZzlaJ3fujpxjVlxlvAIHuq-1gvgli_t58UDi63LV0ojnNPvFNbPPaoFDEWBBU7ArV3VHw1GKH9y8WefsWjkvYJ5WmQZTVraKea4/s16000/Dhurandhar%20(2025).jpg",
+            link: "https://shrinkme.click/uCIZud",
+          },
+          {
+            title: "Crime 101 (2026) Hindi Dubbed Movie Download",
+            poster: "https://www.mp4moviez.rsvp/cover/crime-101-(2026)-hindi-dubbed-movie.jpg",
+            link: "https://shrinkme.click/TbWNUgw8",
+          },
+          { 
+                title: "Danny Phantom (2005) Season 1 Hindi Dubbed Complete Anime Series HDRip", 
+                poster: "https://www.mp4moviez.rsvp/cover/danny-phantom-(2005)-season-1-hindi-dubbed-complete-anime-series.jpg", 
+                link: "https://shrinkme.click/ZCFv1E" 
+        },
+        { 
+                title: "Jurassic World: Fallen Kingdom (2018) Hindi Dubbed BluRay",
+                poster: "https://www.mp4moviez.rsvp/cover/jurassic-world:-fallen-kingdom-(2018)-hindi-dubbed.jpg", 
+                link: "https://shrinkme.click/MWUE" 
+        },
+          { 
+                title: "Predator: Badlands (2025) Hindi Dubbed BluRay", 
+                poster: "https://upload.wikimedia.org/wikipedia/en/9/90/Predator_Badlands_Poster.jpg", 
+                link: "https://shrinkme.click/eCUIC" 
+        },
+        { 
+                title: "Faster (2010) Hindi ORG Dubbed BluRay BluRay", 
+                poster: "https://www.mp4moviez.rsvp/cover/faster-(2010)-hindi-org-dubbed-bluray.jpg", 
+                link: "https://shrinkme.click/axD7D95j" 
+        },
+          { 
+                title: "Fast X (2023) Hindi Org Dubbed", 
+                poster: "https://www.mp4moviez.rsvp/cover/fast-x-(2023)-hindi-org-dubbed-hdrip.jpg", 
+                link: "https://shrinkme.click/gtLZq9" 
+        }
+        ];
+        
+        // ==========================================
+        // 2. AUTOMATIC ENGINE (Isse mat chhedna)
+        // ==========================================
+        function render(data) {
+          const grid = document.getElementById("movieGrid");
+          grid.innerHTML = data
+            .map(
+              (m) => `
+                <div class="movie-card" onclick="window.open('${m.link}', '_blank')">
+                    <img src="${m.poster}" alt="poster">
+                    <div class="movie-title">${m.title}</div>
+                </div>
+            `,
+            )
+            .join("");
+        }
+
+        function toggleMenu() {
+          document.getElementById("sideMenu").classList.toggle("active");
+          const overlay = document.getElementById("overlay");
+          overlay.style.display = overlay.style.display === "block" ? "none" : "block";
+        }
+
+        function search() {
+          const val = document.getElementById("mSearch").value.toLowerCase();
+          const filtered = movies.filter((m) => m.title.toLowerCase().includes(val));
+          render(filtered);
+        }
+
+        window.onload = () => {
+          render(movies);
+          setTimeout(() => {
+            document.getElementById("loader").style.display = "none";
+          }, 2000);
+        };
+      </script>
+    </div>
+    <button onclick="window.location.href='https://www.effectivegatecpm.com';" 
+        style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+  Download / Continue
+</button>
+  </body>
+</html>
