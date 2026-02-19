@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
   <head></head>
   <body>
@@ -206,6 +206,87 @@
         width: 150px;
         outline: none;
       }
+
+      <!DOCTYPE html>
+<html lang="hi">
+<head>
+<style>
+  /* कैटेगरी बटन स्टाइल */
+  .filter-nav { text-align: center; margin-bottom: 20px; }
+  .btn { 
+    padding: 10px 20px; margin: 5px; cursor: pointer; 
+    border: none; background: #333; color: white; border-radius: 5px;
+  }
+  .btn:hover, .btn.active { background: #e50914; } /* Netflix red color */
+
+  /* मूवी ग्रिड स्टाइल */
+  .movie-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+  .movie-card { width: 150px; text-align: center; display: block; } /* शुरू में सब दिखेंगे */
+  .movie-card img { width: 100%; border-radius: 10px; }
+  
+  /* छिपाने के लिए क्लास */
+  .hide { display: none; }
+</style>
+</head>
+<body>
+
+  <!-- 1. कैटेगरी मेन्यू -->
+  <div class="filter-nav">
+    <button class="btn active" onclick="filterMovies('all')">All</button>
+    <button class="btn" onclick="filterMovies('hollywood')">Hollywood</button>
+    <button class="btn" onclick="filterMovies('bollywood')">Bollywood</button>
+    <button class="btn" onclick="filterMovies('animated')">Animated</button>
+  </div>
+
+  <!-- 2. मूवी लिस्ट -->
+  <div class="movie-grid">
+    <!-- बॉलीवुड मूवी -->
+    <div class="movie-card bollywood">
+      <img src="https://via.placeholder.com" alt="Movie">
+      <p>Jawan</p>
+    </div>
+
+    <!-- हॉलीवुड मूवी -->
+    <div class="movie-card hollywood">
+      <img src="https://via.placeholder.com" alt="Movie">
+      <p>Avatar 2</p>
+    </div>
+
+    <!-- एनिमेटेड मूवी -->
+    <div class="movie-card animated">
+      <img src="https://via.placeholder.com" alt="Movie">
+      <p>Spider-Verse</p>
+    </div>
+  </div>
+
+  <!-- 3. फिल्टर करने वाली JavaScript -->
+  <script>
+    function filterMovies(category) {
+      let cards = document.querySelectorAll('.movie-card');
+      let buttons = document.querySelectorAll('.btn');
+
+      // एक्टिव बटन का रंग बदलने के लिए
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // मूवीज़ को फ़िल्टर करने के लिए
+      cards.forEach(card => {
+        if (category === 'all') {
+          card.classList.remove('hide');
+        } else {
+          if (card.classList.contains(category)) {
+            card.classList.remove('hide');
+          } else {
+            card.classList.add('hide');
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
+
 
       /* --- 4. MOVIE GRID & AD SLOTS --- */
       .container {
@@ -535,93 +616,103 @@
   <script type="text/javascript" src="https://www.highperformanceformat.com/cb0d92b67d7da3ce47c232e2e4a56dad/invoke.js"></script>
 </div>
 
-      
-      <script>
-        // ==========================================
-        // 1. ADD YOUR MOVIES HERE (Sabse Aasaan)
-        // ==========================================
-        const movies = [
-          {
-            title: "Kis Kisko Pyaar Karoon 2 (2026) Hindi Movie Download",
-            poster: "https://www.mp4moviez.cooking/cover/kis-kisko-pyaar-karoon-2-(2026)-hindi-movie.jpg",
-            link: "https://shrinkme.click/oODaBY",
-          },
-          {
-            title: "The Amazing Spider Man (2012) Hindi Dubbed Movie HDRip",
-            poster: "https://www.mp4moviez.cooking/cover/the-amazing-spider-man-(2012)-hindi-dubbed-movie.jpg",
-            link: "https://shrinkme.click/ypO1v1b",
-          },
-          {
-            title: "The Amazing Spider Man 2 (2014) Hindi Dubbed Movie HDRip",
-            poster: "https://www.mp4moviez.cooking/cover/the-amazing-spider-man-2-(2014)-hindi-dubbed-movie.jpg",
-            link: "https://shrinkme.click/w0I6lHo",
-          },
-          {
-            title: "Fast and Furious Presents Hobbs and Shaw 2019 Hindi Dubbed Full Movie Download",
-            poster:
-              "https://www.mp4moviez.cooking/cover/fast-and-furious-presents-hobbs-and-shaw-2019-hindi-dubbed-full-movie.jpg",
-            link: "https://shrinkme.click/QelPB",
-          },
+      // ==========================================
+// 1. ADD YOUR MOVIES HERE (With Category Class)
+// ==========================================
+const movies = [
+  {
+    title: "Kis Kisko Pyaar Karoon 2 (2026) Hindi Movie Download",
+    poster: "https://www.mp4moviez.cooking/cover/kis-kisko-pyaar-karoon-2-(2026)-hindi-movie.jpg",
+    link: "https://shrinkme.click/oODaBY",
+    category: "bollywood"
+  },
+  {
+    title: "The Amazing Spider Man (2012) Hindi Dubbed Movie HDRip",
+    poster: "https://www.mp4moviez.cooking/cover/the-amazing-spider-man-(2012)-hindi-dubbed-movie.jpg",
+    link: "https://shrinkme.click/ypO1v1b",
+    category: "hollywood"
+  },
+  {
+    title: "The Amazing Spider Man 2 (2014) Hindi Dubbed Movie HDRip",
+    poster: "https://www.mp4moviez.cooking/cover/the-amazing-spider-man-2-(2014)-hindi-dubbed-movie.jpg",
+    link: "https://shrinkme.click/w0I6lHo",
+    category: "hollywood"
+  },
+  {
+    title: "Fast and Furious Presents Hobbs and Shaw 2019 Hindi Dubbed Full Movie Download",
+    poster: "https://www.mp4moviez.cooking/cover/fast-and-furious-presents-hobbs-and-shaw-2019-hindi-dubbed-full-movie.jpg",
+    link: "https://shrinkme.click/QelPB",
+    category: "hollywood"
+  },
+  {
+    title: "Fast And Furious 2009 Hindi Dubbed Full Movie BluRay",
+    poster: "https://www.mp4moviez.cooking/cover/fast-and-furious-4-2009-hindi-dubbed-full-movie.jpg",
+    link: "https://shrinkme.click/7gG2j",
+    category: "hollywood"
+  },
+  {
+    title: "Fast And Furious 5 (2011) Hindi Dubbed Full Movie BluRay",
+    poster: "https://www.mp4moviez.cooking/cover/fast-and-furious-5-(2011)-hindi-dubbed-full-movie.jpg",
+    link: "https://shrinkme.click/3te4H",
+    category: "hollywood"
+  },
+  {
+    title: "O’ Romeo (2026) Hindi Full Movie HQ HDTC",
+    poster: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI5rMEICmkgQFvSHfSUDChQCQBxVw8Qt6BoWXZ7L43y5QI5gZLfnH2yGAp-JqqTjhNjRYdprKnCgpk-7uQ2-EA8tppIdjDlfX1Wsl96UvsW-WoawZBczcLNS6gmTVYy5FXP2KIdVeLlrPrxEY17E-68ScoNbV_ENje6g2pEWU3iOrqay3Fo0cGK2cx8Dcm/s16000/O%E2%80%99%20Romeo.jpg",
+    link: "https://shrinkme.click/dJ6hV",
+    category: "bollywood"
+  },
+  {
+    title: "Mardaani 3 (2026) Hindi Full Movie HQ HDTC",
+    poster: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7MXusm-PqDVtwA0wz1jeN_bNfV02pN7b1lSI6MCWJ56W5HisFrzg_hEmzaSy4BSql2DQ7PhPzC0HMh5tkMqiLHmDCkpzD4MV7SDfabOqjmDluywTzeH2kattmSuxPlsccB5UdOzfS3VLeH10R5gfvQj9TQdB_IIWMh2N7_iWao7j9SLdV5wyrupBO-AOK/s16000/Mardaani%203%20(1).jpg",
+    link: "https://shrinkme.click/eRCszUD6",
+    category: "bollywood"
+  },
+  {
+    title: "Dhurandhar (2025) NF Hindi ORG Full Movie HDRip",
+    poster: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwBU9Hs-KKYAF4e8sA0RpsJDSaHhbW-iCHF_iN3AIsQqyMp8Ibk6UTsikvkrug3HuTYEKdZonbS5ZJoUdklyrk1OIjGZzlaJ3fujpxjVlxlvAIHuq-1gvgli_t58UDi63LV0ojnNPvFNbPPaoFDEWBBU7ArV3VHw1GKH9y8WefsWjkvYJ5WmQZTVraKea4/s16000/Dhurandhar%20(2025).jpg",
+    link: "https://shrinkme.click/uCIZud",
+    category: "bollywood"
+  },
+  {
+    title: "Crime 101 (2026) Hindi Dubbed Movie Download",
+    poster: "https://www.mp4moviez.rsvp/cover/crime-101-(2026)-hindi-dubbed-movie.jpg",
+    link: "https://shrinkme.click/TbWNUgw8",
+    category: "hollywood"
+  },
+  { 
+    title: "Danny Phantom (2005) Season 1 Hindi Dubbed Complete Anime Series HDRip", 
+    poster: "https://www.mp4moviez.rsvp/cover/danny-phantom-(2005)-season-1-hindi-dubbed-complete-anime-series.jpg", 
+    link: "https://shrinkme.click/ZCFv1E",
+    category: "animated" 
+  },
+  { 
+    title: "Jurassic World: Fallen Kingdom (2018) Hindi Dubbed BluRay",
+    poster: "https://www.mp4moviez.rsvp/cover/jurassic-world:-fallen-kingdom-(2018)-hindi-dubbed.jpg", 
+    link: "https://shrinkme.click/MWUE",
+    category: "hollywood" 
+  },
+  { 
+    title: "Predator: Badlands (2025) Hindi Dubbed BluRay", 
+    poster: "https://upload.wikimedia.org/wikipedia/en/9/90/Predator_Badlands_Poster.jpg", 
+    link: "https://shrinkme.click/eCUIC",
+    category: "hollywood" 
+  },
+  { 
+    title: "Faster (2010) Hindi ORG Dubbed BluRay BluRay", 
+    poster: "https://www.mp4moviez.rsvp/cover/faster-(2010)-hindi-org-dubbed-bluray.jpg", 
+    link: "https://shrinkme.click/axD7D95j",
+    category: "hollywood" 
+  },
+  { 
+    title: "Fast X (2023) Hindi Org Dubbed", 
+    poster: "https://www.mp4moviez.rsvp/cover/fast-x-(2023)-hindi-org-dubbed-hdrip.jpg", 
+    link: "https://shrinkme.click/gtLZq9",
+    category: "hollywood" 
+  }
+];
 
-          {
-            title: "Fast And Furious 2009 Hindi Dubbed Full Movie BluRay",
-            poster: "https://www.mp4moviez.cooking/cover/fast-and-furious-4-2009-hindi-dubbed-full-movie.jpg",
-            link: "https://shrinkme.click/7gG2j",
-          },
-          {
-            title: "Fast And Furious 5 (2011) Hindi Dubbed Full Movie BluRay",
-            poster: "https://www.mp4moviez.cooking/cover/fast-and-furious-5-(2011)-hindi-dubbed-full-movie.jpg",
-            link: "https://shrinkme.click/3te4H",
-          },
-          {
-            title: "O’ Romeo (2026) Hindi Full Movie HQ HDTC",
-            poster:
-              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI5rMEICmkgQFvSHfSUDChQCQBxVw8Qt6BoWXZ7L43y5QI5gZLfnH2yGAp-JqqTjhNjRYdprKnCgpk-7uQ2-EA8tppIdjDlfX1Wsl96UvsW-WoawZBczcLNS6gmTVYy5FXP2KIdVeLlrPrxEY17E-68ScoNbV_ENje6g2pEWU3iOrqay3Fo0cGK2cx8Dcm/s16000/O%E2%80%99%20Romeo.jpg",
-            link: "https://shrinkme.click/dJ6hV",
-          },
-          {
-            title: "Mardaani 3 (2026) Hindi Full Movie HQ HDTC",
-            poster:
-              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7MXusm-PqDVtwA0wz1jeN_bNfV02pN7b1lSI6MCWJ56W5HisFrzg_hEmzaSy4BSql2DQ7PhPzC0HMh5tkMqiLHmDCkpzD4MV7SDfabOqjmDluywTzeH2kattmSuxPlsccB5UdOzfS3VLeH10R5gfvQj9TQdB_IIWMh2N7_iWao7j9SLdV5wyrupBO-AOK/s16000/Mardaani%203%20(1).jpg",
-            link: "https://shrinkme.click/eRCszUD6",
-          },
-          {
-            title: "Dhurandhar (2025) NF Hindi ORG Full Movie HDRip",
-            poster:
-              "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwBU9Hs-KKYAF4e8sA0RpsJDSaHhbW-iCHF_iN3AIsQqyMp8Ibk6UTsikvkrug3HuTYEKdZonbS5ZJoUdklyrk1OIjGZzlaJ3fujpxjVlxlvAIHuq-1gvgli_t58UDi63LV0ojnNPvFNbPPaoFDEWBBU7ArV3VHw1GKH9y8WefsWjkvYJ5WmQZTVraKea4/s16000/Dhurandhar%20(2025).jpg",
-            link: "https://shrinkme.click/uCIZud",
-          },
-          {
-            title: "Crime 101 (2026) Hindi Dubbed Movie Download",
-            poster: "https://www.mp4moviez.rsvp/cover/crime-101-(2026)-hindi-dubbed-movie.jpg",
-            link: "https://shrinkme.click/TbWNUgw8",
-          },
-          { 
-                title: "Danny Phantom (2005) Season 1 Hindi Dubbed Complete Anime Series HDRip", 
-                poster: "https://www.mp4moviez.rsvp/cover/danny-phantom-(2005)-season-1-hindi-dubbed-complete-anime-series.jpg", 
-                link: "https://shrinkme.click/ZCFv1E" 
-        },
-        { 
-                title: "Jurassic World: Fallen Kingdom (2018) Hindi Dubbed BluRay",
-                poster: "https://www.mp4moviez.rsvp/cover/jurassic-world:-fallen-kingdom-(2018)-hindi-dubbed.jpg", 
-                link: "https://shrinkme.click/MWUE" 
-        },
-          { 
-                title: "Predator: Badlands (2025) Hindi Dubbed BluRay", 
-                poster: "https://upload.wikimedia.org/wikipedia/en/9/90/Predator_Badlands_Poster.jpg", 
-                link: "https://shrinkme.click/eCUIC" 
-        },
-        { 
-                title: "Faster (2010) Hindi ORG Dubbed BluRay BluRay", 
-                poster: "https://www.mp4moviez.rsvp/cover/faster-(2010)-hindi-org-dubbed-bluray.jpg", 
-                link: "https://shrinkme.click/axD7D95j" 
-        },
-          { 
-                title: "Fast X (2023) Hindi Org Dubbed", 
-                poster: "https://www.mp4moviez.rsvp/cover/fast-x-(2023)-hindi-org-dubbed-hdrip.jpg", 
-                link: "https://shrinkme.click/gtLZq9" 
-        }
-        ];
+              
     
         // ==========================================
         // 2. AUTOMATIC ENGINE (Isse mat chhedna)
