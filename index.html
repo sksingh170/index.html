@@ -2,11 +2,9 @@
 <html lang="en">
   <head></head>
   <body>
-    ⅝
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JaGUar Cinema | 2026 Cyber Premium</title>
+    <title>JaGUar Cinema</title>
     <link href="https://fonts.googleapis.com" rel="stylesheet" />
     <style>
       :root {
@@ -16,7 +14,6 @@
         --iaf-grey: #8d99ae;
         --hacker-gradient: linear-gradient(45deg, #ff007f, #00f2ff, #f39c12, #bc13fe);
       }
-
       body {
         margin: 0;
         background: #000;
@@ -27,7 +24,6 @@
         flex-direction: column;
         min-height: 100vh;
       }
-
       /* --- 1. SUBMARINE LOADER (Missile & Windows) --- */
       #loader {
         position: fixed;
@@ -38,7 +34,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: 0.8s;
+        transition: 0.2s;
       }
       .loader-content {
         position: relative;
@@ -127,7 +123,6 @@
           transform: translateY(15px) rotate(-3deg);
         }
       }
-
       /* --- 2. HEADER & RAFALE --- */
       header {
         padding: 10px 5%;
@@ -179,7 +174,6 @@
           transform: scale(1.4);
         }
       }
-
       /* --- 3. MENU & NAVIGATION --- */
       .top-nav {
         display: flex;
@@ -206,8 +200,7 @@
         width: 150px;
         outline: none;
       }
-
-      /* --- 4. MOVIE GRID & AD SLOTS --- */
+     /* --- 4. MOVIE GRID & AD SLOTS --- */
       .container {
         padding: 20px 5%;
         flex: 1;
@@ -233,7 +226,6 @@
           width: 728px !important;
           max-width: none !important;
         }
-
         .ad-slot {
           height: 60px; /* हाइट थोड़ी बढ़ा दी है */
           width: 100%;
@@ -274,7 +266,6 @@
         height: 35px;
         overflow: hidden;
       }
-
       /* --- 5. SIDE MENU & FOOTER --- */
       .side-menu {
         position: fixed;
@@ -324,7 +315,6 @@
         font-weight: bold;
       }
     </style>
-
     <div id="loader">
       <div class="loader-content">
         <div class="mini-sub">
@@ -337,7 +327,6 @@
         LOADING...
       </h2>
     </div>
-
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
     <div class="side-menu" id="sideMenu">
       <h3 style="color: var(--gold); font-family: &quot;Orbitron&quot;">CATEGORIES</h3>
@@ -360,7 +349,6 @@
         CLOSE
       </button>
     </div>
-
     <header>
       <div class="jaguar-text">JaGUar Cinema</div>
       <div class="jet-window">
@@ -373,7 +361,6 @@
         <input type="text" class="search-box" id="mSearch" placeholder="SEARCH..." onkeyup="search()" />
       </div>
     </header>
-
     <div class="container">
       <!-- TOP AD -->
       <div class="ad-slot">
@@ -445,20 +432,6 @@
         ></script>
         <div id="container-9a437924caa885714adc8f3c6548e57d"></div>
       </div>
-     
-      <div style="text-align:center; min-height: 250px;">
-  <script type="text/javascript">
-    atOptions = {
-      'key' : 'cb0d92b67d7da3ce47c232e2e4a56dad',
-      'format' : 'iframe',
-      'height' : 250,
-      'width' : 300,
-      'params' : {}
-    };
-  </script>
-  <script type="text/javascript" src="https://www.highperformanceformat.com"></script>
-</div>
-
       <footer>
         <div style="font-family: &quot;Orbitron&quot;; color: var(--neon-cyan); font-size: 20px; margin-bottom: 15px">
           JaGUar_Cinema.sh
@@ -497,7 +470,6 @@
         <script type="text/javascript">
           // Screen width check karke sahi size load karega
           var isMobile = window.innerWidth <= 768;
-
           atOptions = {
             key: "c96d3ac9b4865cbcf9690e7a6e05beb2",
             format: "iframe",
@@ -544,7 +516,6 @@
               "https://www.mp4moviez.cooking/cover/fast-and-furious-presents-hobbs-and-shaw-2019-hindi-dubbed-full-movie.jpg",
             link: "https://shrinkme.click/QelPB",
           },
-
           {
             title: "Fast And Furious 2009 Hindi Dubbed Full Movie BluRay",
             poster: "https://www.mp4moviez.cooking/cover/fast-and-furious-4-2009-hindi-dubbed-full-movie.jpg",
@@ -604,7 +575,6 @@
                 link: "https://shrinkme.click/gtLZq9" 
         }
         ];
-        
         // ==========================================
         // 2. AUTOMATIC ENGINE (Isse mat chhedna)
         // ==========================================
@@ -621,19 +591,16 @@
             )
             .join("");
         }
-
         function toggleMenu() {
           document.getElementById("sideMenu").classList.toggle("active");
           const overlay = document.getElementById("overlay");
           overlay.style.display = overlay.style.display === "block" ? "none" : "block";
         }
-
         function search() {
           const val = document.getElementById("mSearch").value.toLowerCase();
           const filtered = movies.filter((m) => m.title.toLowerCase().includes(val));
           render(filtered);
         }
-
         window.onload = () => {
           render(movies);
           setTimeout(() => {
