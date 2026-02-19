@@ -207,21 +207,6 @@
         outline: none;
       }
 
-     /* --- MOVIE FILTER STYLES --- */
-.filter-nav { text-align: center; margin: 20px 0; }
-.btn { 
-  padding: 8px 16px; margin: 5px; cursor: pointer; 
-  border: 1px solid var(--neon-cyan); background: transparent; 
-  color: var(--neon-cyan); border-radius: 5px; font-family: "Orbitron";
-  font-size: 12px; transition: 0.3s;
-}
-.btn:hover, .btn.active { background: var(--neon-cyan); color: #000; }
-.movie-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 20px; }
-.movie-card { width: 140px; text-align: center; color: white; font-family: sans-serif; }
-.movie-card img { width: 100%; border-radius: 8px; border: 1px solid #333; height: 200px; object-fit: cover; }
-.hide { display: none !important; }
-
-
       /* --- 4. MOVIE GRID & AD SLOTS --- */
       .container {
         padding: 20px 5%;
@@ -387,15 +372,6 @@
         <button class="menu-btn" onclick="toggleMenu()">☰ MENU</button>
         <input type="text" class="search-box" id="mSearch" placeholder="SEARCH..." onkeyup="search()" />
       </div>
-       
-       <!-- Category Buttons -->
-<div class="filter-nav">
-  <button class="btn active" onclick="filterMovies(event, 'all')">All</button>
-  <button class="btn" onclick="filterMovies(event, 'hollywood')">Hollywood</button>
-  <button class="btn" onclick="filterMovies(event, 'bollywood')">Bollywood</button>
-  <button class="btn" onclick="filterMovies(event, 'animated')">Animated</button>
-</div>
-
     </header>
 
     <div class="container">
@@ -528,9 +504,7 @@
           width: 320,
           params: {},
         };
-      </script>
-
-      
+      </script> 
       <div class="ad-container" style="width: 100%; display: flex; justify-content: center; overflow: hidden;">
   <style>
     /* डेस्कटॉप के लिए डिफॉल्ट साइज */
@@ -698,25 +672,5 @@ const movies = [
         style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
   Download / Continue
 </button>
-
-   <script>
-  function filterMovies(e, category) {
-    const cards = document.querySelectorAll('.movie-card');
-    const buttons = document.querySelectorAll('.btn');
-
-    // Button color change logic
-    buttons.forEach(btn => btn.classList.remove('active'));
-    if(e) e.currentTarget.classList.add('active');
-
-    // Filtering logic
-    cards.forEach(card => {
-      if (category === 'all' || card.classList.contains(category)) {
-        card.classList.remove('hide');
-      } else {
-        card.classList.add('hide');
-      }
-    });
-  }
-</script>
   </body>
 </html>
