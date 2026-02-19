@@ -38,7 +38,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: 0.8s;
+        transition: 0.4s;
       }
       .loader-content {
         position: relative;
@@ -343,7 +343,7 @@
       <h3 style="color: var(--gold); font-family: &quot;Orbitron&quot;">CATEGORIES</h3>
       <a href="#">BOLLYWOOD</a>
       <a href="#">HOLLYWOOD</a>
-      <a href="#">WEB SERIES</a>
+      <a href="#">ANIMATED</a>
       <a href="https://t.me" style="color: var(--neon-cyan)">JOIN TELEGRAM</a>
       <button
         onclick="toggleMenu()"
@@ -505,6 +505,37 @@
           params: {},
         };
       </script>
+
+      
+      <div class="ad-container" style="width: 100%; display: flex; justify-content: center; overflow: hidden;">
+  <style>
+    /* डेस्कटॉप के लिए डिफॉल्ट साइज */
+    .ad-container iframe {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    /* मोबाइल व्यू के लिए छोटा साइज (अगर जरूरत हो) */
+    @media screen and (max-width: 480px) {
+        .ad-container iframe {
+            width: 100% !important;
+            transform: scale(0.9); /* मोबाइल पर थोड़ा छोटा दिखने के लिए */
+        }
+    }
+  </style>
+
+  <script type="text/javascript">
+    atOptions = {
+      'key' : 'cb0d92b67d7da3ce47c232e2e4a56dad',
+      'format' : 'iframe',
+      'height' : 250,
+      'width' : 300,
+      'params' : {}
+    };
+  </script>
+  <script type="text/javascript" src="https://www.highperformanceformat.com/cb0d92b67d7da3ce47c232e2e4a56dad/invoke.js"></script>
+</div>
+
+      
       <script>
         // ==========================================
         // 1. ADD YOUR MOVIES HERE (Sabse Aasaan)
