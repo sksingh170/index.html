@@ -773,10 +773,10 @@ render(movies, 'all');
         function search() {
           const val = document.getElementById("mSearch").value.toLowerCase();
           const filtered = movies.filter((m) => m.title.toLowerCase().includes(val));
-          render(filtered);
+         render(filtered, 'all');
         }
         window.onload = () => {
-          render(movies);
+          render(movies, 'all');
           setTimeout(() => {
             document.getElementById("loader").style.display = "none";
           }, 2000);
