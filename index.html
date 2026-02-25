@@ -750,15 +750,18 @@ function showDMCA() {
         
         
       function render(movies, filter = 'all') {
-    const grid = document.getElementById("movieGrid");
+  const grid = document.querySelector(".movie-grid");
+
     grid.innerHTML = movies
-        .filter(m => filter === 'all' || m.category === filter) // फिल्टर करने के लिए
-        .map(m => `
-            <div class="movie-card" onclick="window.open('${m.link}')">
-                <img src="${m.poster}" alt="poster">
-                <div class="movie-title">${m.title}</div>
-            </div>
-        `).join("");
+        grid.innerHTML = movies
+    .filter(m => filter === 'all' || m.category === filter)
+    .map(m => `
+        <div class="movie-card" onclick="window.open('${m.link}')">
+            <img src="${m.poster}" alt="poster">
+            <div class="movie-title">${m.title}</div>
+        </div>
+    `).join("");
+
 }
 
 // शुरू में सारी मूवीज दिखाने के लिए:
