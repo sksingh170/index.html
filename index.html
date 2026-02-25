@@ -749,18 +749,18 @@ function showDMCA() {
         // ==========================================
         
         
-      function render(movies, filter = 'all') {
-  const grid = document.querySelector(".movie-grid");
-
-    grid.innerHTML = movies
-        grid.innerHTML = movies
-    .filter(m => filter === 'all' || m.category === filter)
-    .map(m => `
-        <div class="movie-card" onclick="window.open('${m.link}')">
-            <img src="${m.poster}" alt="poster">
-            <div class="movie-title">${m.title}</div>
-        </div>
-    `).join("");
+      function render(data) {
+          const grid = document.getElementById("movieGrid");
+          grid.innerHTML = data
+            .map(
+              (m) => `
+                <div class="movie-card" onclick="window.open('${m.link}', '_blank')">
+                    <img src="${m.poster}" alt="poster">
+                    <div class="movie-title">${m.title}</div>
+                </div>
+            `,
+            )
+            .join("");
 
 }
 
