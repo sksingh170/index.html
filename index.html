@@ -550,10 +550,7 @@
     }
 </script>
 <!-- END: Others Movies Section -->
-
-
-
-          
+  
         </footer>
         <script>
 function showDMCA() {
@@ -712,7 +709,7 @@ function showDMCA() {
                 title: "A Bugs Life (1998) Hindi ORG Dual Audio BluRay | 1080p | 720p | 480p | ESubs", 
                 poster: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-0uIQkKhXxaQfx_r3zUeNdL4J9QAQSX3XZXJEv9dXZUw3fD8PmjC8odUxoKq8jOuMbCP3-c1ltNI_CAXggSVi6CuN7Pvud-XVsdGV6OfWSpVULrJqlA2GA2S7OO8a56h59TtuWEvMP_60Iji4gWVY249QcDGzQguzOf4I9W8ih4KHwGwl7gPVg7FwZPdc/s16000/A%20Bugs%20Life.jpg", 
                 link: "https://shrinkmclassList.toggle",
-        }
+        },
           
         ];
         // ==========================================
@@ -732,12 +729,6 @@ function showDMCA() {
             `,
             )
             .join("");
-
-}
-
-// शुरू में सारी मूवीज दिखाने के लिए:
-render(movies, 'all'); 
-
         }
         function toggleMenu() {
           document.getElementById("sideMenu").classList.toggle("active");
@@ -747,10 +738,10 @@ render(movies, 'all');
         function search() {
           const val = document.getElementById("mSearch").value.toLowerCase();
           const filtered = movies.filter((m) => m.title.toLowerCase().includes(val));
-         render(filtered, 'all');
+         render(filtered);
         }
         window.onload = () => {
-          render(movies, 'all');
+          render(movies);
           setTimeout(() => {
             document.getElementById("loader").style.display = "none";
           }, 2000);
