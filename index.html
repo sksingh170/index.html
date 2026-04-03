@@ -1,34 +1,58 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>My Page</title>
-    <style>
-        /* Add styles for pagination and category system */
-        .pagination { display: flex; justify-content: center; margin: 20px; }
-        .pagination a { padding: 10px 15px; text-decoration: none; border: 1px solid #ccc; margin: 0 5px; }
-        .category { display: inline-block; padding: 5px 10px; margin: 5px; background-color: #f1f1f1; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Collection</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Welcome to my page!</h1>
-    <div class="category">Category 1</div>
-    <div class="category">Category 2</div>
-    <div class="category">Category 3</div>
-    <div class="pagination">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-    </div>
-    <div>
-        <h2>Submarine Loader Animation</h2>
-        <!-- Placeholder for submarine loader animation -->
-        <div class="submarine-animation">
-            <!-- Include submarine loader code here -->
-        </div>
-        <h2>Rafale Jet Animation</h2>
-        <!-- Placeholder for rafale jet animation -->
-        <div class="rafale-animation">
-            <!-- Include rafale jet animation code here -->
+    <div class="loader">
+        <div class="submarine-loader">
+            <!-- Submarine loader animation goes here -->
         </div>
     </div>
+
+    <header>
+        <h1>Movie Collection</h1>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search for movies...">
+        </div>
+    </header>
+
+    <main>
+        <div class="category-filter">
+            <button data-category="all">All</button>
+            <button data-category="action">Action</button>
+            <button data-category="drama">Drama</button>
+            <button data-category="comedy">Comedy</button>
+            <!-- More categories can be added -->
+        </div>
+
+        <div class="pagination">
+            <button id="prev">Previous</button>
+            <button id="next">Next</button>
+        </div>
+
+        <div class="movie-grid">
+            <!-- Insert all 24 movies here with animations -->
+            <div class="movie" data-category="action">
+                <h2>Movie 1</h2>
+                <p>Description of Movie 1</p>
+                <!-- Animation for Rafale jet goes here -->
+            </div>
+            <div class="movie" data-category="drama">
+                <h2>Movie 2</h2>
+                <p>Description of Movie 2</p>
+                <!-- Animation for Rafale jet goes here -->
+            </div>
+            <!-- Repeat for all 24 movies -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Movie Collection</p>
+    </footer>
 </body>
 </html>
