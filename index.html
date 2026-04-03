@@ -362,34 +362,15 @@
   <div class="side-menu" id="sideMenu">
     <h3 style="color: var(--gold); font-family: 'Orbitron'">CATEGORIES</h3>
     <a onclick="filterByCategory('ALL'); toggleMenu()">🎬 ALL MOVIES</a>
-    <a onclick="filterByCategory('BOLLYWOOD'); toggleMenu()">💃 BOLLYWOOD</a>
-    <a onclick="filterByCategory('HOLLYWOOD'); toggleMenu()">🌟 HOLLYWOOD</a>
-    <a onclick="filterByCategory('ANIMATED'); toggleMenu()">🎨 ANIMATED</a>
+    <a onclick="filterByCategory('BOLLYWOOD'); toggleMenu()">🎟 BOLLYWOOD</a>
+    <a onclick="filterByCategory('HOLLYWOOD'); toggleMenu()">🎫 HOLLYWOOD</a>
+    <a onclick="filterByCategory('ANIMATED'); toggleMenu()">💳 ANIMATED</a>
     <a href="https://t.me" style="color: var(--neon-cyan)">JOIN TELEGRAM</a>
     <button onclick="toggleMenu()" style="margin-top: 20px; width: 100%; background: red; color: white; border: none; padding: 10px; cursor: pointer; font-weight: bold;">CLOSE</button>
   </div>
-  <header>
-    <div class="jaguar-text">JaGUar Cinema</div>
-    <div class="jet-window">
-      <svg class="rafale-iaf" viewBox="0 0 100 50">
-        <path d="M10,25 L40,20 L80,25 L40,30 Z" fill="var(--iaf-grey)" stroke="var(--neon-cyan)"></path>
-      </svg>
-    </div>
-    <div class="top-nav">
-      <button class="menu-btn" onclick="toggleMenu()">☰ MENU</button>
-      <input type="text" class="search-box" id="mSearch" placeholder="SEARCH..." onkeyup="search()" />
-    </div>
-  </header>
-  <div class="container">
-    <div class="category-container">
-      <button class="category-btn active" id="catALL" onclick="filterByCategory('ALL')">🎬 ALL MOVIES</button>
-      <button class="category-btn" id="catBOLLYWOOD" onclick="filterByCategory('BOLLYWOOD')">💃 BOLLYWOOD</button>
-      <button class="category-btn" id="catHOLLYWOOD" onclick="filterByCategory('HOLLYWOOD')">🌟 HOLLYWOOD</button>
-      <button class="category-btn" id="catANIMATED" onclick="filterByCategory('ANIMATED')">🎨 ANIMATED</button>
-    </div>
-    
-    <!-- TOP AD -->
-      <div class="ad-slot">
+
+  <!-- TOP AD -->
+    <div class="ad-slot">
         
         <script src="https://www.highperformanceformat.com/13683c613242723f7f0d3d473d8badfe/invoke.js"></script>
       </div>
@@ -441,14 +422,32 @@
 <script src="https://www.highperformanceformat.com/db044b6ccc33ccbd0fdc03bdd9b79606/invoke.js"></script>
     <script src="https://pl28723245.effectivegatecpm.com/50/64/91/50649151d6bcc5f657d22e6f962f04b2.js"></script>
       </div>
-    
+  
+  <header>
+    <div class="jaguar-text">JaGUar Cinema</div>
+    <div class="jet-window">
+      <svg class="rafale-iaf" viewBox="0 0 100 50">
+        <path d="M10,25 L40,20 L80,25 L40,30 Z" fill="var(--iaf-grey)" stroke="var(--neon-cyan)"></path>
+      </svg>
+    </div>
+    <div class="top-nav">
+      <button class="menu-btn" onclick="toggleMenu()">☰ MENU</button>
+      <input type="text" class="search-box" id="mSearch" placeholder="SEARCH..." onkeyup="search()" />
+    </div>
+  </header>
+  <div class="container">
+    <div class="category-container">
+      <button class="category-btn active" id="catALL" onclick="filterByCategory('ALL')">🎬 ALL MOVIES</button>
+      <button class="category-btn" id="catBOLLYWOOD" onclick="filterByCategory('BOLLYWOOD')">💃 BOLLYWOOD</button>
+      <button class="category-btn" id="catHOLLYWOOD" onclick="filterByCategory('HOLLYWOOD')">🌟 HOLLYWOOD</button>
+      <button class="category-btn" id="catANIMATED" onclick="filterByCategory('ANIMATED')">🎨 ANIMATED</button>
+    </div>
     <div class="movie-grid" id="movieGrid"></div>
     <div class="pagination-container">
       <button class="pagination-btn" id="prevBtn" onclick="previousPage()">← PREVIOUS</button>
       <span class="pagination-info">Page <span id="currentPage">1</span> / <span id="totalPages">1</span></span>
       <button class="pagination-btn" id="nextBtn" onclick="nextPage()">NEXT →</button>
     </div>
-    
 
 <!-- START: Others Movies Section (Line 468 ke baad paste karein) -->
 <div style="max-width: 100%; margin: 15px 10px; background: #161b22; border-radius: 12px; border: 1px solid #30363d; font-family: sans-serif; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
