@@ -337,6 +337,13 @@
       padding: 40px 20px;
       font-size: 16px;
     }
+    
+    function openCinema(url) {
+    if (url) {
+        window.open(url, '_blank');
+    }
+}
+
   </style>
 </head>
 <body>
@@ -386,6 +393,37 @@
       <span class="pagination-info">Page <span id="currentPage">1</span> / <span id="totalPages">1</span></span>
       <button class="pagination-btn" id="nextBtn" onclick="nextPage()">NEXT →</button>
     </div>
+
+    <!-- TOP AD -->
+<div class="ad-slot">
+    <script>
+      atOptions = { 'key': '13683c613242723f7f0d3d473d8badfe', 'format': 'iframe', 'height': 90, 'width': 728, 'params': {} };
+    </script>
+    <script src="https://highperformanceformat.com"></script>
+</div>
+
+<!-- START: Others Movies Section -->
+<div class="others-movies-box">
+    <div style="background: linear-gradient(90deg, #ff00cc, #3333ff); color: #fff; padding: 12px; text-align: center; font-weight: bold; text-transform: uppercase; font-size: 14px; letter-spacing: 1px;">Others Movies Section</div>
+    
+    <div onclick="openCinema('https://mp4moviez.scot')" style="display: flex; align-items: center; padding: 14px; border-bottom: 1px solid #21262d; color: #00d2ff; font-size: 13px; cursor: pointer;">
+        <span style="color: #00ff88; margin-right: 10px;">▶</span> Latest Hindi Hot Web Series <span style="font-size: 9px; padding: 2px 6px; border-radius: 4px; margin-left: auto; background: #ff4757; color: white; font-weight: bold;">HOT</span>
+    </div>
+    <div onclick="openCinema('https://mp4moviez.scot')" style="display: flex; align-items: center; padding: 14px; border-bottom: 1px solid #21262d; color: #00d2ff; font-size: 13px; cursor: pointer;">
+        <span style="color: #00ff88; margin-right: 10px;">▶</span> New Hindi Dubbed Series <span style="font-size: 9px; padding: 2px 6px; border-radius: 4px; margin-left: auto; background: #5352ed; color: white; font-weight: bold;">NEW</span>
+    </div>
+    <div onclick="openCinema('https://maza18.net')" style="display: flex; align-items: center; padding: 14px; color: #00d2ff; font-size: 13px; cursor: pointer;">
+        <span style="color: #00ff88; margin-right: 10px;">▶</span> Maza18 Specials <span style="font-size: 9px; padding: 2px 6px; border-radius: 4px; margin-left: auto; background: #ffa502; color: white; font-weight: bold;">18+</span>
+    </div>
+</div>
+
+<!-- BOTTOM AD -->
+<div id="ad-mobile-wrapper" style="width: 100%; display: flex; justify-content: center; margin: 10px 0;">
+    <script src="https://effectivegatecpm.com"></script>
+</div>
+
+
+    
     <footer>
       <div style="font-family: 'Orbitron'; color: var(--neon-cyan); font-size: 20px; margin-bottom: 15px">JaGUar_Cinema.sh</div>
       <div class="f-links">
@@ -446,6 +484,13 @@
       function search(){const val=document.getElementById("mSearch").value.toLowerCase();if(val.trim()===""){filterByCategory(currentCategory);return;}filteredMovies=allMovies.filter((m)=>m.title.toLowerCase().includes(val)&&(currentCategory==="ALL"||m.category===currentCategory));currentPage=1;renderPage();}
       function showDMCA(){alert("DMCA Policy:\n\nAll my post are free available on internet posted by somebody else, I am not violating any copyright law. If anything is against LAW, Please notify me so that it can be removed within 24 hours, please telegram us (t.me/jaguar_cinema) immediately and we will delete it!\n\nCopyright © jaguar_cinema All rights Reserved");}
       window.onload=()=>{allMovies=movies;filteredMovies=movies;renderPage();setTimeout(()=>{document.getElementById("loader").style.display="none";},2000);};
+
+      function openCinema(url) {
+    if (url) {
+        window.open(url, '_blank');
+    }
+}
+      
     </script>
   </div>
 </body>
