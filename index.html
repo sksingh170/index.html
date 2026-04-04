@@ -387,42 +387,18 @@
       <button class="category-btn" id="catHOLLYWOOD" onclick="filterByCategory('HOLLYWOOD')">🌟 HOLLYWOOD</button>
       <button class="category-btn" id="catANIMATED" onclick="filterByCategory('ANIMATED')">🎨 ANIMATED</button>
     </div>
-    <!-- === PRO AD SECTION START === -->
-<div class="ad-master-container" style="width: 100%; text-align: center; margin: 20px 0; overflow: hidden;">
-    <!-- 2. Small Banner (320x50) - Best for Mobile -->
-    <div class="ad-wrapper banner-320" style="margin-top: 10px;">
-        <script type="text/javascript">
-            atOptions = {'key' : 'c96d3ac9b4865cbcf9690e7a6e05beb2', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {}};
-        </script>
-        <script type="text/javascript" src="https://www.highperformanceformat.com/c96d3ac9b4865cbcf9690e7a6e05beb2/invoke.js"></script>
+    <!-- === CLEAN & CENTERED AD SECTION === -->
+<div class="ad-master-container" style="width: 100%; text-align: center; margin: 5px 0; overflow: hidden;">
+
+    <!-- 1. Main Banner (728x90) - Mobile Centering Fix -->
+    <div class="ad-wrapper banner-728" style="display: flex; justify-content: center; width: 100%;">
+        <div class="scale-fix">
+            <script type="text/javascript">
+                atOptions = {'key' : '13683c613242723f7f0d3d473d8badfe', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {}};
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/13683c613242723f7f0d3d473d8badfe/invoke.js"></script>
+        </div>
     </div>
-
-<!-- Social Bar / Anti-Adblock Script -->
-<script src="https://pl28723245.effectivegatecpm.com/50/64/91/50649151d6bcc5f657d22e6f962f04b2.js"></script>
-
-<style>
-    /* Desktop par ads normal dikhengi */
-    .ad-wrapper { display: inline-block; max-width: 100%; }
-
-    /* Mobile view Fixes (Screen width 768px se kam) */
-    @media screen and (max-width: 768px) {
-        .banner-728 {
-            transform: scale(0.45); /* 728px ko chota karke fit karega */
-            transform-origin: top center;
-            height: 50px;
-            margin-bottom: -10px;
-        }
-        .sky-container {
-            flex-direction: row; /* Mobile par 160x300 aur 160x600 ko side-by-side rakhega */
-            transform: scale(0.8); /* Thoda chota karega taki screen se bahar na jaye */
-            margin-top: -10px;
-        }
-        .banner-320 {
-            margin-top: 20px !important;
-        }
-    }
-</style>
-<!-- === PRO AD SECTION END === -->
 
     <div class="movie-grid" id="movieGrid"></div>
     <div class="pagination-container">
@@ -430,24 +406,24 @@
       <span class="pagination-info">Page <span id="currentPage">1</span> / <span id="totalPages">1</span></span>
       <button class="pagination-btn" id="nextBtn" onclick="nextPage()">NEXT →</button>
     </div>
-    <!-- 1. Main Banner (728x90) - Scaled for Mobile -->
-    <div class="ad-wrapper banner-728">
+    
+    <!-- 2. Small Banner (320x50) -->
+    <div class="ad-wrapper banner-320" style="margin-top: 5px;">
         <script type="text/javascript">
-            atOptions = {'key' : '13683c613242723f7f0d3d473d8badfe', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {}};
+            atOptions = {'key' : 'c96d3ac9b4865cbcf9690e7a6e05beb2', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {}};
         </script>
-        <script type="text/javascript" src="https://www.highperformanceformat.com/13683c613242723f7f0d3d473d8badfe/invoke.js"></script>
+        <script type="text/javascript" src="https://www.highperformanceformat.com/c96d3ac9b4865cbcf9690e7a6e05beb2/invoke.js"></script>
     </div>
-    <!-- 3. Skyscrapers (160x300 & 160x600) - Side by Side on Desktop -->
-    <div class="sky-container" style="display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
-        <!-- 160x300 Ad -->
-        <div class="ad-wrapper sky-160-300">
+
+    <!-- 3. Skyscrapers (160x300 & 160x600) -->
+    <div class="sky-container" style="display: flex; justify-content: center; gap: 5px; margin-top: 5px; flex-wrap: wrap;">
+        <div class="ad-wrapper sky-box">
             <script type="text/javascript">
                 atOptions = {'key' : '53fae0bd6201965585d9a9275eb380db', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {}};
             </script>
             <script type="text/javascript" src="https://www.highperformanceformat.com/53fae0bd6201965585d9a9275eb380db/invoke.js"></script>
         </div>
-        <!-- 160x600 Ad -->
-        <div class="ad-wrapper sky-160-600">
+        <div class="ad-wrapper sky-box">
             <script type="text/javascript">
                 atOptions = {'key' : 'db044b6ccc33ccbd0fdc03bdd9b79606', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {}};
             </script>
@@ -455,6 +431,28 @@
         </div>
     </div>
 </div>
+
+<script src="https://pl28723245.effectivegatecpm.com/50/64/91/50649151d6bcc5f657d22e6f962f04b2.js"></script>
+
+<style>
+    .ad-wrapper { display: inline-block; max-width: 100%; vertical-align: top; }
+    
+    @media screen and (max-width: 768px) {
+        /* Badi ad ko center karne aur gap hatane ke liye */
+        .banner-728 { height: 50px; overflow: hidden; }
+        .scale-fix { 
+            transform: scale(0.48); 
+            transform-origin: center top; 
+            width: 728px;
+            margin-left: -50%; /* Force Center */
+            margin-right: -50%;
+        }
+        
+        .sky-container { transform: scale(0.9); margin-top: -10px; }
+        .banner-320 { margin-top: 0 !important; }
+        .ad-master-container { margin: 5px 0 !important; }
+    }
+</style>
 
 <!-- START: Others Movies Section (Line 468 ke baad paste karein) -->
 <div style="max-width: 100%; margin: 15px 10px; background: #161b22; border-radius: 12px; border: 1px solid #30363d; font-family: sans-serif; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
