@@ -387,6 +387,26 @@
       <button class="category-btn" id="catHOLLYWOOD" onclick="filterByCategory('HOLLYWOOD')">🌟 HOLLYWOOD</button>
       <button class="category-btn" id="catANIMATED" onclick="filterByCategory('ANIMATED')">🎨 ANIMATED</button>
     </div>
+
+    <div class="ad-wrapper" style="width: 100%; display: flex; justify-content: center; overflow: hidden;">
+  <div id="responsive-ad" style="max-width: 100%;">
+    <script type="text/javascript">
+      // Check if screen is mobile
+      var isMobile = window.innerWidth < 768;
+
+      atOptions = {
+        'key' : '13683c613242723f7f0d3d473d8badfe',
+        'format' : 'iframe',
+        // Mobile ke liye 300x250 (Best for Movies) aur Desktop ke liye 728x90
+        'height' : isMobile ? 250 : 90,
+        'width' : isMobile ? 300 : 728,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="https://preliminarycultural.com"></script>
+  </div>
+    </div>
+    
     <div class="movie-grid" id="movieGrid"></div>
     <div class="pagination-container">
       <button class="pagination-btn" id="prevBtn" onclick="previousPage()">← PREVIOUS</button>
