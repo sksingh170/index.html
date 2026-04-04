@@ -387,19 +387,19 @@
       <button class="category-btn" id="catHOLLYWOOD" onclick="filterByCategory('HOLLYWOOD')">🌟 HOLLYWOOD</button>
       <button class="category-btn" id="catANIMATED" onclick="filterByCategory('ANIMATED')">🎨 ANIMATED</button>
     </div>
-    <!-- === FULLY OPTIMIZED MOBILE & DESKTOP AD LAYOUT === -->
-<div class="ad-master-container" style="width: 100%; text-align: center; margin: 0; padding: 0; overflow: hidden;">
+<!-- === CLEAN & CENTERED AD SECTION === -->
+<div class="ad-master-container" style="width: 100%; text-align: center; margin: 5px 0; overflow: hidden;">
 
-    <!-- 1. Main Banner (728x90) -->
-    <div class="banner-728-wrapper">
-        <div class="scale-fix-728">
+    <!-- 1. Main Banner (728x90) - Mobile Centering Fix -->
+    <div class="ad-wrapper banner-728" style="display: flex; justify-content: center; width: 100%;">
+        <div class="scale-fix">
             <script type="text/javascript">
                 atOptions = {'key' : '13683c613242723f7f0d3d473d8badfe', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {}};
             </script>
-            <script type="text/javascript" src="https://highperformanceformat.com"></script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/13683c613242723f7f0d3d473d8badfe/invoke.js"></script>
         </div>
     </div>
-
+  
     <div class="movie-grid" id="movieGrid"></div>
     <div class="pagination-container">
       <button class="pagination-btn" id="prevBtn" onclick="previousPage()">← PREVIOUS</button>
@@ -407,60 +407,49 @@
       <button class="pagination-btn" id="nextBtn" onclick="nextPage()">NEXT →</button>
     </div>
     <!-- 2. Small Banner (320x50) -->
-    <div class="banner-320-wrapper" style="margin: 2px 0;">
+    <div class="ad-wrapper banner-320" style="margin-top: 5px;">
         <script type="text/javascript">
             atOptions = {'key' : 'c96d3ac9b4865cbcf9690e7a6e05beb2', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {}};
         </script>
-        <script type="text/javascript" src="https://highperformanceformat.com"></script>
+        <script type="text/javascript" src="https://www.highperformanceformat.com/c96d3ac9b4865cbcf9690e7a6e05beb2/invoke.js"></script>
     </div>
 
-    <!-- 3. Skyscrapers (160x300 & 160x600) - Now Scaled for Mobile -->
-    <div class="sky-container">
-        <div class="scale-fix-sky">
-            <div style="display: inline-block; vertical-align: top;">
-                <script type="text/javascript">
-                    atOptions = {'key' : '53fae0bd6201965585d9a9275eb380db', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {}};
-                </script>
-                <script type="text/javascript" src="https://highperformanceformat.com"></script>
-            </div>
-            <div style="display: inline-block; vertical-align: top; margin-left: 5px;">
-                <script type="text/javascript">
-                    atOptions = {'key' : 'db044b6ccc33ccbd0fdc03bdd9b79606', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {}};
-                </script>
-                <script type="text/javascript" src="https://highperformanceformat.com"></script>
-            </div>
+    <!-- 3. Skyscrapers (160x300 & 160x600) -->
+    <div class="sky-container" style="display: flex; justify-content: center; gap: 5px; margin-top: 5px; flex-wrap: wrap;">
+        <div class="ad-wrapper sky-box">
+            <script type="text/javascript">
+                atOptions = {'key' : '53fae0bd6201965585d9a9275eb380db', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {}};
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/53fae0bd6201965585d9a9275eb380db/invoke.js"></script>
+        </div>
+        <div class="ad-wrapper sky-box">
+            <script type="text/javascript">
+                atOptions = {'key' : 'db044b6ccc33ccbd0fdc03bdd9b79606', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {}};
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/db044b6ccc33ccbd0fdc03bdd9b79606/invoke.js"></script>
         </div>
     </div>
 </div>
 
-<script src="https://effectivegatecpm.com"></script>
+<script src="https://pl28723245.effectivegatecpm.com/50/64/91/50649151d6bcc5f657d22e6f962f04b2.js"></script>
 
 <style>
-    /* Desktop Default Styles */
-    .banner-728-wrapper, .sky-container { width: 100%; display: flex; justify-content: center; }
+    .ad-wrapper { display: inline-block; max-width: 100%; vertical-align: top; }
     
     @media screen and (max-width: 768px) {
-        /* 1st Ad Scaling */
-        .banner-728-wrapper { height: 50px; overflow: hidden; margin-top: -10px; }
-        .scale-fix-728 { 
+        /* Badi ad ko center karne aur gap hatane ke liye */
+        .banner-728 { height: 50px; overflow: hidden; }
+        .scale-fix { 
             transform: scale(0.48); 
             transform-origin: center top; 
             width: 728px;
-            flex-shrink: 0;
-        }
-
-        /* 3rd Ad Scaling (Dono Skyscrapers ek saath) */
-        .sky-container { height: 520px; overflow: hidden; margin-top: -20px; }
-        .scale-fix-sky {
-            transform: scale(0.85); /* Mobile par size 85% tak kam kar dega */
-            transform-origin: center top;
-            width: 340px; /* 160+160+gap */
-            flex-shrink: 0;
-            display: flex;
-            justify-content: center;
+            margin-left: -50%; /* Force Center */
+            margin-right: -50%;
         }
         
-        .banner-320-wrapper { margin: 0 !important; }
+        .sky-container { transform: scale(0.9); margin-top: -10px; }
+        .banner-320 { margin-top: 0 !important; }
+        .ad-master-container { margin: 5px 0 !important; }
     }
 </style>
     
@@ -528,7 +517,30 @@
       <div style="background:#222; margin:15% auto; padding:20px; width:80%; max-width:500px; border-radius:10px; border:1px solid var(--pink); text-align:center;">
         <h3>About Us</h3>
         <p style="font-size:14px; line-height:1.6; text-align:left;">Thanks For Using JaGUar_Cinema<br><br>If you are the rightful owner of any contents, please telegram us <b>(t.me/jaguar_cinema)</b> and we will delete it immediately!<br><br>© Copyright 2026 - JaGUar_Cinema.sh</p>
-        <button onclick="document.getElementById('aboutModal').style.display='none'" style="background:var(--pink); color:white; border:none; padding:10px 20px; cursor:pointer; border-radius:5px; margin-top:10px;">Close</button>
+        <div style="text-align: center; width: 100%;">
+    <button onclick="document.getElementById('aboutModal').style.display='none'" 
+        style="
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            cursor: pointer;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            outline: none;
+        "
+        onmouseover="this.style.transform='scale(1.05)'; this.style.box-shadow='0 6px 20px rgba(255, 75, 43, 0.4)';"
+        onmouseout="this.style.transform='scale(1)'; this.style.box-shadow='0 4px 15px rgba(255, 75, 43, 0.3)';"
+    >
+        Close
+    </button>
+</div>
       </div>
     </div>
     <script>
