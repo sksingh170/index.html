@@ -32,36 +32,45 @@
       flex-direction: column;
       min-height: 100vh;
     }
-    
-    .header-container {
+
+    /* --- JAGUAR CINEMA NEW LOGO STYLES --- */
+.header-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    justify-content: center;
     width: 100%;
-}
-
-.rotating-logo {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--neon-cyan); /* आपके कोड का वेरिएबल */
-    box-shadow: 0 0 20px var(--neon-cyan);
-    animation: spin 10s linear infinite;
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
-@keyframes spin {
+.rotating-logo {
+    width: 60px; /* छोटा साइज */
+    height: 60px; /* छोटा साइज */
+    border-radius: 50%; /* गोल करने के लिए */
+    object-fit: cover;
+    border: 2px solid #00f2ff; /* ग्लोइंग बॉर्डर */
+    box-shadow: 0 0 12px rgba(0, 242, 255, 0.8);
+    animation: spin-logo 8s linear infinite; /* घूमने के लिए */
+    display: block;
+    margin: 0 auto 8px auto;
+}
+
+@keyframes spin-logo {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-.brand-name {
-    color: white;
-    font-size: 2.5rem;
-    text-shadow: 0 0 10px var(--neon-cyan);
+.jaguar-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 8px #00f2ff;
+    text-align: center;
+    letter-spacing: 1px;
 }
+/* --- END OF LOGO STYLES --- */
+
     
     /* SUBMARINE LOADER STYLES */
     #loader {
@@ -415,7 +424,7 @@
     
     <div class="header-container">
         <!-- रोटेटिंग लोगो -->
-        <img src="images/logo.png" alt="Logo" class="rotating-logo">
+        <img src="logo.png" alt="Logo" class="rotating-logo">
         <!-- ब्रांड नेम -->
         <div class="jaguar-text">JaGUar Cinema</div>
     </div>
