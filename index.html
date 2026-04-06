@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="logo.png">
-<img src="logo.png" alt="Jaguar Cinema Logo" width="150">
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZ9TLQ2JD2"></script>
 <script>
@@ -34,6 +32,37 @@
       flex-direction: column;
       min-height: 100vh;
     }
+    
+    .header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.rotating-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--neon-cyan); /* आपके कोड का वेरिएबल */
+    box-shadow: 0 0 20px var(--neon-cyan);
+    animation: spin 10s linear infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.brand-name {
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+    
     /* SUBMARINE LOADER STYLES */
     #loader {
       position: fixed;
@@ -383,7 +412,14 @@
     <button onclick="toggleMenu()" style="margin-top: 20px; width: 100%; background: red; color: white; border: none; padding: 10px; cursor: pointer; font-weight: bold;">CLOSE</button>
   </div>
   <header>
-    <div class="jaguar-text">JaGUar Cinema</div>
+    
+    <div class="header-container">
+        <!-- रोटेटिंग लोगो -->
+        <img src="images/logo.png" alt="Logo" class="rotating-logo">
+        <!-- ब्रांड नेम -->
+        <div class="jaguar-text">JaGUar Cinema</div>
+    </div>
+    
     <div class="jet-window">
       <svg class="rafale-iaf" viewBox="0 0 100 50">
         <path d="M10,25 L40,20 L80,25 L40,30 Z" fill="var(--iaf-grey)" stroke="var(--neon-cyan)"></path>
