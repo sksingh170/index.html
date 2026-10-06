@@ -690,8 +690,10 @@
       let currentCategory = "ALL";
 
       const movies = [
-        {title:"",category:"ANIMATED",poster:"",link:""},
-        {title:"",category:"BOLLYWOOD",poster:"",link:""},
+        const movies = [
+  { title: "Toxic (2025)", category: "BOLLYWOOD", poster: "Movies/Toxic (2025).jpg", link: "https://mobilejsr.com/view/1hpRts80Th"},
+  { title: "Movie Name 2", category: "BOLLYWOOD", poster: "", link: "YOUR_DOWNLOAD_LINK_2" },
+  { title: "Movie Name 3", category: "ANIMATED", poster: "", link: "YOUR_DOWNLOAD_LINK_3" }
       ];
 
       function filterByCategory(category){currentCategory=category;currentPage=1;document.querySelectorAll('.category-btn').forEach(btn=>btn.classList.remove('active'));if(category==='ALL'){document.getElementById('catALL').classList.add('active');filteredMovies=[...allMovies];}else{document.getElementById('cat'+category).classList.add('active');filteredMovies=allMovies.filter(m=>m.category===category);}renderPage();window.scrollTo(0,300);}
