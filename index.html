@@ -691,6 +691,7 @@
 
       const movies = [
   { title: "Toxic (2026)", category: "BOLLYWOOD", poster: "Movies/Toxic (2026).jpg", link: "https://mobilejsr.com/view/1hpRts80Th"},
+        {title: "Drishyam The Conclusion (2026)", category: "BOLLYWOOD", poster: "Movies/Drishyam The Conclusion (2026).jpg" , link: "https://mobilejsr.com/view/52OaMWHep6"},
  ];
 
       function filterByCategory(category){currentCategory=category;currentPage=1;document.querySelectorAll('.category-btn').forEach(btn=>btn.classList.remove('active'));if(category==='ALL'){document.getElementById('catALL').classList.add('active');filteredMovies=[...allMovies];}else{document.getElementById('cat'+category).classList.add('active');filteredMovies=allMovies.filter(m=>m.category===category);}renderPage();window.scrollTo(0,300);}
