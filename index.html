@@ -210,21 +210,23 @@
     .category-container {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      margin: 20px 0;
-      flex-wrap: wrap;
+      gap: 6px;
+      margin: 10px 0;
+      flex-wrap: nowrap;
+      overflow-x: auto;      /* Agar kisi bohot chhote phone me space kam pade to user scroll kar sake */
+    padding: 0 4px;
     }
     .category-btn {
       background: rgba(0, 242, 255, 0.2);
       color: var(--neon-cyan);
       border: 2px solid var(--neon-cyan);
-      padding: 8px 16px;
+      padding: 5px 8px;
       border-radius: 5px;
       font-family: "Orbitron";
       font-weight: 700;
       cursor: pointer;
       transition: all 0.3s;
-      font-size: 11px;
+      font-size: 10px;
     }
     .category-btn:hover {
       background: var(--neon-cyan);
